@@ -1,0 +1,15 @@
+package day0619;
+
+public class IfTest_14 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int n=100;
+		
+		if(n>=100)
+			System.out.println("n은 100보다 크거나 같다");
+			System.out.println("프로그램종료!!!");
+	}
+
+}
