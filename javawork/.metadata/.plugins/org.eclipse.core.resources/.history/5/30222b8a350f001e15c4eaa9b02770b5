@@ -1,0 +1,16 @@
+package day0620;
+
+public class CharAt_14 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String juminNum="971234-23213458";
+		//index순서 01234567....
+		char seventh=juminNum.charAt(7);
+		
+		System.out.println(seventh);
+
+	}
+
+}
