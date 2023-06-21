@@ -1,0 +1,64 @@
+package day0621;
+
+public class QuizFor_09 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//Q.1 2 4 5 7 8 10 _continue이용해서 출력해보세요
+		for(int i=1;i<=10;i++)
+		{
+			if(i%3==0)
+				continue;
+				System.out.print(i+" ");
+		}
+		System.out.println();
+		
+		/*Q2 continue이용할것!!!
+		 홀수값: 1
+		 홀수값: 3
+		 홀수값: 5
+		 홀수값: 7
+		 홀수값: 9 */
+		for(int i=1;i<=10;i++)
+		{
+			if(i%2==0) //짝수
+				continue;
+			System.out.println("홀수값: "+i);
+		}
+		
+		//1~100까지중에서 홀수의 합을 구하시오
+		int osum=0; //홀수합계구할변수
+		int esum=0; //짝수
+		for(int i=1;i<=100;i++)
+		{
+			if(i%2!=0)
+			osum+=i;
+			else
+				esum+=i;
+			
+		}
+		System.out.println("홀수의 합 "+osum);
+		System.out.println("짝수의 합 "+esum);
+		
+		//while(true)문을 이용해서 1~100사이의 짝수합 구하기
+		esum=0;
+		int x=0;
+		while(true)
+		{
+			/*if(x%2==0)
+				esum+=x;
+			x++;
+			if(x>100)
+				break;*/
+			
+			x++;
+			if(x%2==0)
+				esum+=x;
+			if(x==100)
+				break;
+		}
+		System.out.println("짝수의 합 "+esum);
+	}
+
+}
