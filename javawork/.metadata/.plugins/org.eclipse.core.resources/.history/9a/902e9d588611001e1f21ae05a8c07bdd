@@ -1,0 +1,17 @@
+package day0623;
+
+public class StringMethod_08 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String str1="Have a Nice Day";
+		String str2="     Happy Day     ";
+		
+		System.out.println("str2의 길이: "+str2.length());
+		System.out.println("str2의 앞뒤 공백제거후 길이: "+str2.trim().length());
+		System.out.println("*"+str2+"*");
+		System.out.println("*"+str2.trim()+"*");
+	}
+
+}

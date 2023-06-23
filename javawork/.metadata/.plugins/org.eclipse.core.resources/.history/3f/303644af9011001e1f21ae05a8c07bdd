@@ -1,0 +1,13 @@
+package day0623;
+
+public class TempNumChange_11 {
+
+	public static void main(String[] args) {
+		// 순서바꾸기
+		int a=10,b=20;
+		
+		System.out.println("a="+a+" ,b="+b);
+
+	}
+
+}

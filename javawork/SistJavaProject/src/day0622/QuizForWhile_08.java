@@ -42,12 +42,36 @@ public class QuizForWhile_08 {
 	}
 	
 	public static void quiz2() {
+		//Q.총 10개의 다양한 숫자(양수,음수)를 입력받아 양수의 갯수와 음수의 갯수를 구하시오
+		/*
+		 1 : 45
+		 2: -23
+		 
+		 =========
+		 양수갯수: 6
+		 음수갯수: 3
+		 */
+		Scanner sc=new Scanner(System.in);
+		int num,p=0,n=0;
 		
+		for(int x=1;x<=10;x++)
+		{
+			System.out.print(x+":");
+			num=sc.nextInt();
+			
+			if(num<0)
+				n++;
+			else if(num>0)
+				p++;
+		}
+		System.out.println("양수갯수: "+p);
+		System.out.println("음수갯수: "+n);
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		quiz1();
+		//quiz1();
+		quiz2();
 	}
 
 }

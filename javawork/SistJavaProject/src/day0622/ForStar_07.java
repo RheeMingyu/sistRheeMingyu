@@ -1,5 +1,7 @@
 package day0622;
 
+import java.util.Scanner;
+
 public class ForStar_07 {
 
 	public static void main(String[] args) {
@@ -31,7 +33,6 @@ public class ForStar_07 {
 				System.out.print("*");
 			System.out.println();
 		}
-		
 	}
 
 }
