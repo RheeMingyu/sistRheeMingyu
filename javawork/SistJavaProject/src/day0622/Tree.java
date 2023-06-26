@@ -2,7 +2,7 @@ package day0622;
 
 import java.util.Scanner;
 
-public class ForStar_07 {
+public class Tree {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

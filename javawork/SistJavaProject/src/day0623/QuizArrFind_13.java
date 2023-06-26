@@ -10,7 +10,7 @@ public class QuizArrFind_13 {
 		String [] stuNames= {"이성신","이민규","박병주","최성현","김영준","강연주","최진평","고은비","송주영"};
 
 		Scanner sc=new Scanner(System.in);
-		boolean flag=false;
+		boolean flag;
 		String name;
 		
 		while(true)
@@ -23,6 +23,7 @@ public class QuizArrFind_13 {
 				System.out.println("종료합니다");
 				break;
 			}
+			flag=false;
 			for(int i=0;i<stuNames.length;i++)
 			{	
 				if(name.equals(stuNames[i]))
