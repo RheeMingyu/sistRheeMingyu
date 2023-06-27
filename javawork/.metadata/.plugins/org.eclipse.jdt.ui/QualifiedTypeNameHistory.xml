@@ -11,4 +11,14 @@
     <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="day0627.ExObject_01"/>
+    <fullyQualifiedTypeName name="day0627.Ex2Object_02"/>
+    <fullyQualifiedTypeName name="day0627.Student_03"/>
+    <fullyQualifiedTypeName name="day0627.MemoryCnt_04"/>
+    <fullyQualifiedTypeName name="day0627.ConstA"/>
+    <fullyQualifiedTypeName name="day0627.ObTestA"/>
+    <fullyQualifiedTypeName name="day0627.Student"/>
+    <fullyQualifiedTypeName name="day0627.Info_08"/>
+    <fullyQualifiedTypeName name="day0627.Quiz_09"/>
+    <fullyQualifiedTypeName name="day0627.Quiz_10"/>
 </qualifiedTypeNameHistroy>

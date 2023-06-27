@@ -1,0 +1,20 @@
+package day0627;
+
+class ObTestA {
+	
+	int x;
+	static int y;
+}
+////////////////////////////
+public class ExObTest_06 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		//x는 생성
+		ObTestA oa1=new ObTestA();
+		System.out.println(oa1.x);
+		//y는 클래스명으로 호출
+	}
+
+}

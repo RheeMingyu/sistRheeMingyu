@@ -1,0 +1,37 @@
+package day0627;
+
+class ConstA {
+	
+	int num=0;
+	
+	//디폴트생성자...명시적인 생성자를 만들면 디폴트 생성자는 자동생성되지않는다
+	//필요하면 만들어준다
+	public ConstA() {
+		System.out.println("디폴트 생성자");
+	}
+	
+	
+	//인자있는생성자
+	public ConstA(int num) {
+		this.num=num;
+		System.out.println("생성자 호출");
+	}
+	
+	//메서드
+}
+
+
+//////////////////////////////
+public class ConstTest_05 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		ConstA ca1=new ConstA(30);
+		System.out.println(ca1.num);
+		
+		ConstA ca2=new ConstA();
+		System.out.println(ca2.num);
+	}
+
+}
