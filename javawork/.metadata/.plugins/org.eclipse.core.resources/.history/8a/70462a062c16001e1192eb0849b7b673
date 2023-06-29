@@ -1,0 +1,44 @@
+package day0629;
+
+class Point {
+	int x;
+	int y;
+	
+	//디폴트 생성자
+	public Point() {
+		System.out.println("super_디폴트 생성자");
+	}
+	
+	//명시적 생성자
+	public Point(int x,int y) {
+		this.x=x;
+		this.y=y;
+	}
+	
+	//메서드
+	public void write() {
+		System.out.println("x좌표="+x+"y좌표="+y);
+	}
+}
+//////////////////////
+class SubPoint extends Point{
+	String msg;
+	
+	public SubPoint(int x, int y,String msg) {
+		super(x, y);
+		this.msg=msg;
+	}
+	
+	public SubPoint() {
+		// TODO Auto-generated constructor stub
+	}
+}
+//////////////////////
+public class ExObTest_05 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

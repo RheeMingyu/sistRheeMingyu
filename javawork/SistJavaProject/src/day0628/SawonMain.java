@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class SawonMain {
 
-	public static void getSawon(Sawon[] sawon) {
+	public static void getSawon(Sawon[] x) {
 		
 		//제목
 		Sawon.getTitle();
 		
-		for(Sawon s:sawon)
+		for(Sawon s:x)
 			System.out.println(s.getSawonName()+"\t"+s.getPay()+"\t"+s.getFamSu()
 			+"\t"+s.getTimeSu()+"\t"+s.getFamilySudang()+"\t"+s.getTimeSudang()+"\t"
 			+s.getTotalPay());
