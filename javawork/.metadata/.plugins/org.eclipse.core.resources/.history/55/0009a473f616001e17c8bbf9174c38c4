@@ -1,0 +1,20 @@
+package day0630;
+
+import javax.swing.JFrame;
+
+public class SwingLayout_08 extends JFrame{
+
+	public SwingLayout_08(String title) {
+		super(title);
+		
+		this.setBounds(200, 300, 400, 600);
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new SwingLayout_08("스윙 레이아웃 연습");
+	}
+
+}
