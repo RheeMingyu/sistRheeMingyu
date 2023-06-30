@@ -1,0 +1,27 @@
+package day0630;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class SwingLayout_08 extends JFrame{
+
+	Container cp;
+	
+	public SwingLayout_08(String title) {
+		super(title);
+		
+		this.setBounds(200, 300, 400, 600);
+		cp=this.getContentPane();
+		cp.setBackground(new Color(120,200,102));
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new SwingLayout_08("스윙 레이아웃 연습");
+	}
+
+}
