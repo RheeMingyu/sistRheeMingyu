@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="day0629.Employee_04"/>
-    <fullyQualifiedTypeName name="day0629.Manager_04"/>
-    <fullyQualifiedTypeName name="day0629.Point"/>
-    <fullyQualifiedTypeName name="day0629.SubPoint"/>
-    <fullyQualifiedTypeName name="day0629.Shop"/>
-    <fullyQualifiedTypeName name="day0629.MyCart"/>
-    <fullyQualifiedTypeName name="day0629.Person"/>
-    <fullyQualifiedTypeName name="day0629.My"/>
-    <fullyQualifiedTypeName name="day0629.Fruit"/>
-    <fullyQualifiedTypeName name="day0629.Apple"/>
-    <fullyQualifiedTypeName name="day0629.Banana"/>
-    <fullyQualifiedTypeName name="day0629.Orange"/>
-    <fullyQualifiedTypeName name="day0629.Clean"/>
-    <fullyQualifiedTypeName name="day0629.Study"/>
-    <fullyQualifiedTypeName name="day0629.Work"/>
-    <fullyQualifiedTypeName name="day0629.Food"/>
-    <fullyQualifiedTypeName name="day0629.FoodShop"/>
-    <fullyQualifiedTypeName name="day0629.Food_10"/>
-    <fullyQualifiedTypeName name="day0630.Market"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="day0630.MyMarket"/>
     <fullyQualifiedTypeName name="day0630.InterA"/>
     <fullyQualifiedTypeName name="day0630.InterB"/>
@@ -37,7 +17,6 @@
     <fullyQualifiedTypeName name="day0630.Update"/>
     <fullyQualifiedTypeName name="day0630.Delete"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="day0630.Command"/>
     <fullyQualifiedTypeName name="day0630.Modify"/>
     <fullyQualifiedTypeName name="day0630.SwingBasic_07"/>
@@ -51,7 +30,6 @@
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionEvent"/>
     <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
     <fullyQualifiedTypeName name="day0630.OuterObject"/>
     <fullyQualifiedTypeName name="day0630.OuterObject.InnerObject"/>
@@ -60,4 +38,26 @@
     <fullyQualifiedTypeName name="day0630.Outer.Inner2"/>
     <fullyQualifiedTypeName name="day0630.OuterEx"/>
     <fullyQualifiedTypeName name="day0630.AbstEx"/>
+    <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="day0703.NullPoint_02"/>
+    <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.lang.Thread"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.IOException"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="day0703.ArrayList_13"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.util.Iterator"/>
 </qualifiedTypeNameHistroy>

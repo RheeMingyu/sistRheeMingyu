@@ -1,0 +1,45 @@
+package day0703;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+//score.txt를 읽고 몇개인지 구하고 총점,평균까지 구해서 출력
+public class FileException_07 {
+
+	public static void scoreRead() {
+		String fileName="D:\\sist0615\\file\\score.txt";
+		FileReader fr=null;
+		BufferedReader br=null;
+		int cnt=0,sum=0,avg;
+		
+		try {
+			fr=new FileReader(fileName);
+			br=new BufferedReader(fr);
+			
+			while(true)
+			{
+			String s=br.readLine();
+			cnt++;
+			int i=Integer.parseInt(s);
+			sum+=i;
+			avg=sum/cnt;
+
+			System.out.println(cnt+"\n총점:"+sum+"\n평균:"+avg);
+			System.out.println(s);
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO: handle exception
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		scoreRead();
+	}
+
+}
