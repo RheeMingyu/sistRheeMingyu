@@ -1,0 +1,50 @@
+package day0704;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class SwingGrid_06 extends JFrame{
+
+	Container cp;
+	//이미지아이콘
+	ImageIcon icon1=new ImageIcon("D:\\sist0615\\SwingImage\\swingimage\\img1.gif");
+	ImageIcon icon2=new ImageIcon("D:\\sist0615\\SwingImage\\swingimage\\img2.gif");
+	ImageIcon icon3=new ImageIcon("D:\\sist0615\\SwingImage\\swingimage\\img3.gif");
+	ImageIcon icon4=new ImageIcon("D:\\sist0615\\SwingImage\\swingimage\\img4.gif");
+	
+	//버튼선언
+	JButton btn1,btn2,btn3,btn4;
+	
+	public SwingGrid_06(String title) {
+		super(title);
+		cp=this.getContentPane();
+		this.setBounds(200, 100, 150, 290);
+		cp.setBackground(new Color(120,120,20));
+		setDesign();
+		setVisible(true);
+	}
+	
+	public void setDesign() {
+		//버튼4개 생성
+		this.setLayout(new GridLayout(2, 2)); //버튼을 2행2열로 배치
+		btn1=new JButton("hello", icon1);
+		btn1.setVerticalTextPosition(JButton.BOTTOM);//텍스트 세로위치
+		btn1.setHorizontalTextPosition(JButton.CENTER);//텍스트 가로위치
+		this.add(btn1);
+		
+		btn1.setRolloverIcon(icon2);
+		btn1.setPressedIcon(icon3);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new SwingGrid_06("그리드 레이아웃");
+	}
+
+}
