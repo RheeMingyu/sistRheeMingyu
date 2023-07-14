@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+    <style>
+        /* class: .   id: # */
+        .happy{ /* happy라는 class 전체태그에 적용 */
+            color: #ffccff;
+            font-size: 30px;
+            font-family: 'Dongle';
+        }
+
+        b.nice{ /* b태그영역에서만 적용되는 클래스 */
+            text-decoration: underline;
+            color: blue;
+            text-shadow: 3px 3px 3px #ccc;
+        }
+
+        img.imga{
+            width: 150px;
+            border: 10px groove gray;
+            margin-left: 200px;
+            margin-bottom: 50px;
+        }
+
+        img.imgb{
+            /* 가로 세로 200  그림자  테두리둥글리기 */
+            width: 200px;
+            height: 200px;
+            box-shadow: 5px 5px 5px gray;
+            border-radius: 100px; /*100px은 완전한 동그라미*/
+        }
+
+        b.bts{
+            font-size: 40px;
+            font-family: 'Dongle';
+            color: brown;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+<body>
+    <font size="5" color="red">Font Tag!!</font><br>
+    <span style="color: magenta;font-size: 2em;">Span Tag!!</span><br>
+    <span style="border: 2px solid green;;">안녕하세요!!</span><br> /*높이조절 안됨*/
+    <div class="happy">Div Tag_#1!!</div>
+    <div class="happy">Div Tag_#2!!</div>
+    <b class="happy nice">B Tag!!굵게 속성 포함된 태그</b><br>
+    <img src="../html_img/1.png" alt="이미지 없다" title="만화이미지1" class="img-circle">
+    <br>
+    <img class="img-thumbnail" src="../flower_ani/star8.png" alt="음식사진 없음" title="점심">
+    <br>
+    <b class="bts">육개장</b>
+    <br>
+    <img src="../flower_ani/4.jpg" alt="음식사진없음" title="뷔프부르기뇽" class="img-rounded">
+    <img src="../flower_ani/5.jpg" alt="음식사진없음" title="맛있겠다" class="img-circle">
+    <img src="../flower_ani/6.jpg" alt="음식사진없음" title="볶음밥" class="img-thumbnail">
+    <img src="../flower_ani/7.jpg" alt="음식사진없음" title="이건뭐냐" class="img-rounded">
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tb1{
+            width: 400px;
+            border: 3px solid gray;
+            border-collapse: collapse;
+        }
+
+        .tb1 td,.tb1 th{
+            border: 1px solid gray;
+        }
+
+        .tb1 tr th{
+            background-color: aqua;
+        }
+
+        .tb1 tr td:hover{
+            background-color: brown;
+            color: white;
+        }
+
+        .tb2{
+            width: 400px;
+            border: 2px solid gray;
+        }
+
+        .tb2 td{
+            border: 2px solid black;
+        }
+
+        .tb3{
+            border: 2px solid gray;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .tb3 th,.tb3 td{
+            border: 2px solid gray;
+        }
+
+        .tb3 th:hover{
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <table border="1" style="width: 300px;">
+        <caption><b>[표 1]</b></caption>
+        <tr height="50" bgcolor="orange">
+            <td align="center">하나</td>
+            <td align="right" valign="top">둘</td>
+            <td valign="bottom" bgcolor="gray">셋</td>
+        </tr>
+        <tr height="50">
+            <td colspan="3">3칸합침!!</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="tb1">
+        <caption><b>[표 2]</b></caption>
+        <tr>
+            <th>사진</th>
+            <th>이름</th>
+            <th>핸드폰</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td rowspan="3">
+                <img src="../flower_ani/10.jpg">
+            </td>
+            <td>이성신</td>
+            <td>010-1982-9187</td>
+            <td>안산시</td>
+        </tr>
+        <tr>
+            <td>와타시</td>
+            <td>010-8250-9354</td>
+            <td>서울시</td>
+        </tr>
+        <tr>
+            <td>최성현</td>
+            <td>010-1982-9187</td>
+            <td>수원시</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="tb2">
+        <caption><b>[표 문제_span]</b></caption>
+        <tr>
+            <td rowspan="2" align="center">1</td>
+            <td colspan="2">2</td>
+            <td align="center">3</td>
+        </tr>
+        <tr>
+            <td colspan="3">4</td>
+        </tr>
+        <tr align="center">
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="tb3">
+        <tr>
+            <th>이름</th>
+            <th>사진</th>
+            <th>신상정보</th>
+        </tr>
+        <tr>
+            <td rowspan="5">이민규</td>
+            <td rowspan="5"><img src="../html_img/bg07.gif"
+                onmouseover="src='../flower_ani/10.jpg'"
+                onmouseout="src='../html_img/bg07.gif'" width="400px" height="300px"></td>
+            <td>나이:비밀</td>
+        </tr>
+        <tr>
+            <td>주소:서울시</td>
+        </tr>
+        <tr>
+            <td>수상경력:무</td>
+        </tr>
+        <tr>
+            <td>폰번:비밀</td>
+        </tr>
+        <tr>
+            <td>하하하</td>
+        </tr>
+    </table>
+</body>
+</html>

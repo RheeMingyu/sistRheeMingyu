@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        li{
+            list-style: none;
+            float: left;
+            width: 150px;
+            height: 50px;
+            border: 1px solid gray;
+            text-align: center; /*정렬, 상하는 안됨*/
+            line-height: 50px; /*상하 조절, height와 같은 수치로 해야*/
+            margin-right: 10px; /*박스 오른쪽 간격 띄기*/
+            background-color: azure;
+            font-size: 25px;
+            font-family: 'Nanum Pen Script';
+            border-radius: 20px; /*박스 굴곡 조절*/
+        }
+
+        li:hover{
+            background-color: blueviolet;
+            color: white;
+            box-shadow: 5px 5px 5px gray;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h3>ul을 이용 간단메뉴</h3>
+    <br>
+    <ul>
+        <li>Home</li>
+        <li>집소개</li>
+        <li>게시판</li>
+        <li>방명록</li>
+        <li>오시는길</li>
+        <li>Q&A</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 400px;
+            height: 250px;
+            border: 1px solid gray;
+            margin-bottom: 20px;
+            margin-left: 50px;
+            background-size: 50px 70px;
+        }
+
+        div.a{
+            background-image: url("../flower_ani/s1.JPG");
+        }
+
+        div.b{
+            background-image: url("../flower_ani/s2.JPG");
+            background-repeat: repeat-x;
+        }
+
+        div.c{
+            background-image: url("../flower_ani/s3.JPG");
+            background-repeat: repeat-y;
+        }
+
+        div.d{
+            background-image: url("../flower_ani/s4.JPG");
+            background-repeat: no-repeat;
+            background-size: 100px;
+            background-position: right bottom;
+        }
+
+        /* 범용클래스 즉 모든태그에서 사용가능 */
+        .bg{
+            background-color: beige;
+        }
+
+        body{
+            background-image: url("../flower_ani/1.jpg");
+            background-repeat: no-repeat;
+            background-position: 800px 200px; /*x,y*/
+        }
+    </style>
+</head>
+<body>
+    <div class="a"></div>
+    <div class="b"></div>
+    <div class="c bg"></div> <!--클래스 2개이상 공백으로 구분-->
+    <div class="d bg"></div>
+</body>
+</html>

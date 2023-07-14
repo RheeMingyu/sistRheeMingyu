@@ -1,0 +1,43 @@
+        div.a{
+            font-size: 2em;
+            font-family: 'Dongle';
+        }
+
+        div.b>figure{ /*>는 바로 아래 지칭, 띄어쓰기는 하위*/
+            float: left;
+        }
+
+        div.b>figure>img{ /*img 특정 안하면 figcaption까지 변경*/
+            border: 3px solid green;
+            border-radius: 30px 60px 100px 20px;/*왼쪽 상단모서리부터 시계방향*/
+        }
+
+        div.b>figure>figcaption>b{
+            font-size: 25px;
+            margin-left: 20px;
+            font-family: 'Dongle';
+        }
+
+        h3.c{
+            /* float:left속성을 해제하고 싶다 */
+            clear: both;
+        }
+
+        div.d{
+            display: flex;
+            /* row: 가로방향(왼쪽정렬) row-reverse:거꾸로출력(우측정렬)
+            column: 세로방향으로 정렬 */
+            flex-direction: row;
+        }
+
+        div.d img{
+            border: 2px solid green;
+            box-shadow: 15px 15px 15px gray;
+            border-radius: 20px;
+        }
+
+        div.d b{
+            margin-left: 25px;
+            font-family: 'Nanum Pen Scipt';
+            color: brown;
+        }

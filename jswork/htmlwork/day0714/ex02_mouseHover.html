@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myimg1{
+            width: 200px;
+            height: 150px;
+            border-radius: 30px;
+            border: 2px solid green;
+        }
+
+       /*  #myimg1:hover{
+            background-image: url("../flower_ani/1.jpg");
+        }
+
+        #myimg1:active{
+            background-image: url("../flower_ani/11.jpg");
+        } */
+    </style>
+</head>
+<body>
+    <img src="../Food/f1.png" title="꽃" id="myimg1"
+    onmouseover="this.src='../flower_ani/12.jpg'"
+    onmouseout="src='../Food/f1.png'">
+
+    <img src="../html_img/1.png"
+    onmouseenter="this.src='../html_img/2.png'"
+    onmouseleave="this.src='../html_img/1.png'"> /*this.는 img 자체의미*/
+</body>
+</html>
