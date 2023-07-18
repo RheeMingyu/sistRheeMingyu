@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 70px;
+            height: 80px;
+            border: 1px solid gray;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>배열_초기값 지정</h3>
+    <script>
+        var arr1=["../Food/f1.png",
+        "../만화이미지/11.png","../만화이미지/10.png",
+        "../flower_ani/12.jpg","../Food/f3.png"];
+
+        var s="배열갯수: "+arr1.length;
+
+        //for문
+        for(var i=0;i<arr1.length;i++)
+        {
+            s+="<img src='"+arr1[i]+"'>";
+        }
+
+        document.write(s);
+    </script>
+
+    <h3>배열_new Array로 지정</h3>
+    <script>
+        var arr2=new Array(5);
+
+        var s="배열갯수: "+arr2.length;
+
+        //Food폴더의 이미지5개
+        for(var i=0;i<arr2.length;i++)
+        {
+            arr2[i]="<img src='../Food/f"+(i+1)+".png'>";
+            s+=arr2[i];
+        }
+
+        document.write(s);
+    </script>
+
+    <h3>배열_new Array로지정..push로 초기화</h3>
+    <script>
+        var arr3=new Array();
+        arr3.push("../Food/f4.png");
+        arr3.push("../Food/f1.png");
+        arr3.push("../Food/f7.png");
+        arr3.push("../Food/f2.png");
+        arr3.push("../Food/f9.png");
+        arr3.push("../Food/f15.png");
+
+        var s="배열갯수: "+arr3.length;
+
+        for(var i=0;i<arr3.length;i++)
+        {
+            s+="<img src='"+arr3[i]+"'>";
+        }
+
+        document.write(s);
+    </script>
+
+    <h3>배열_new Array로지정..arr3에서 pop으로 2개삭제후 출력</h3>
+    <script>
+        arr3.pop();
+        arr3.pop();
+
+        var s="배열갯수: "+arr3.length;
+
+        for(var i=0;i<arr3.length;i++)
+        {
+            s+="<img src='"+arr3[i]+"'>";
+        }
+
+        document.write(s);
+    </script>
+
+</body>
+</html>

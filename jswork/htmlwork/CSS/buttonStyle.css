@@ -1,0 +1,31 @@
+  @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap');
+body{
+    font-family: 'Gaegu';
+}
+
+.btn{
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.btn-green{
+    background-color: green;
+    color: white;
+}
+
+.btn-pink{
+    background-color: pink;
+    color: black;
+}
+
+.btn-yellow{
+    background-color: yellow;
+    color: brown;
+}
+
+.btn-orange{
+    background-color: orange;
+    color: blue;
+}

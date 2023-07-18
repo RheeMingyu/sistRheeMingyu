@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var tag="<h2>Hello H2!!</h2>";
+        document.write(tag);
+    </script>
+
+    <h3>2칸씩 띄어서 가로로 1~10까지 출력</h3>
+    <script>
+        for(var i=1;i<=10;i++)
+        {
+            document.write("<b>"+i+"</b>&nbsp&nbsp");
+        }
+    </script>
+
+    <h3>flowers_ani 폴더에 있는 이미지 s1~10까지 출력(가로 100)</h3>
+    <script>
+        for(var i=1;i<=10;i++)
+        {
+            document.write("<img src='../flower_ani/s"+i+".JPG' style='width: 100px;'>");
+        
+            if(i%5==0)
+                document.write("<br><br>")
+        }
+    </script>
+
+    <h3>다음의 배열이미지를 출력(가로방향 두칸씩 띄어서 가로100 보더1)</h3>
+    <script>
+        var divImg=["bottle01","beauty3","bottle02","beauty1","beauty2"];
+
+        for(var i=0;i<divImg.length;i++)
+        {
+            document.write("<img src='../div_img/"+divImg[i]+".jpg' width='100' border='1'>&nbsp&nbsp");
+        }
+    </script>
+
+    <h3>만화이미지 20개를 5개씩 가로로 배치</h3>
+    <script>
+        for(var i=1;i<=20;i++)
+        {
+            //if(i<10)
+                document.write("<img src='../만화이미지/"+(i<10?'0':'')+i+".png' width='100'>");
+            //else
+            //    document.write("<img src='../만화이미지/"+i+".png' width='100'>");
+
+            if(i%5==0)
+                document.write("<br>");
+        }
+    </script>
+</body>
+</html>
