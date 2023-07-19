@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid gray;
+            width: 500px;
+        }
+        tr,th,td{
+            border: 1px dotted gray;
+            font-size: 10pt;
+        }
+        div{
+            border: 1px solid gray;
+            width: 350px;
+            height: 200px;
+            margin: 50px;
+
+        }
+    </style>
+    <script>
+        function goWeight(num){
+            document.getElementById("out1").innerHTML=num;
+        }
+
+        function goDate(){
+            out2.innerHTML="날짜: "+frm.day.value;
+        }
+
+        function goColor(){
+            totout.style.background=frm.color.value; //totout id의 style 중 background 속성에 우항 값을 대입
+        }
+
+        function goHeight(num){
+            outh.innerHTML=num;
+        }
+
+        function printing(){
+            var edu="나의 최종학력은 ";
+            for(var i=0;i<frm.grade.length;i++)
+            {
+                if(frm.grade[i].checked)
+                    edu+=frm.grade[i].value+"입니다<br>";
+            }
+            totout.innerHTML=edu;
+
+            var langs="내가 가능한 언어는 ";
+            var flag=false;
+            for(var i=0;i<frm.lang.length;i++)
+            {
+                if(frm.lang[i].checked)
+                {
+                    langs+=frm.lang[i].value+" ";
+                    flag=true;
+                }    
+            }
+            if(flag)
+                langs+="입니다<br>";
+            else
+                langs+="이 중에 없습니다<br>";
+            totout.innerHTML+=langs;
+            
+            var friends="우리반에서 가장 친한 친구는 ";
+            totout.innerHTML+=friends+frm.friend.value+"입니다<br>";
+        }
+    </script>
+</head>
+<body>
+<form name="frm">
+    <table>
+        <caption><b>Radio&Check</b></caption>
+        <tr height="30">
+            <td>
+                <b>최종학력을 선택하시오</b>
+                <!-- radio는 name이 동일해야한다 -->
+                <input type="radio" name="grade" value="고등학교" checked>고등학교&nbsp;
+                <input type="radio" name="grade" value="전문대학">전문대학&nbsp;
+                <input type="radio" name="grade" value="대학교">대학교&nbsp;
+                <input type="radio" name="grade" value="대학원">대학원&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>본인이 가능한 프로그램 언어</b>
+                <!-- checkbox는 중복선택가능 name 동일해야 한다 -->
+                <input type="checkbox" name="lang" value="C언어">C언어&nbsp;
+                <input type="checkbox" name="lang" value="JAVA">JAVA&nbsp;
+                <input type="checkbox" name="lang" value="ORACLE">ORACLE&nbsp;
+                <input type="checkbox" name="lang" value="SPRING">SPRING&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>이미지선택</b>
+                <input type="file">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>우리반에서 가장친한친구</b>
+                <select name="friend">
+                    <option value="성현">성현</option>
+                    <option value="연주">연주</option>
+                    <option value="영환">영환</option>
+                    <option value="주영" selected>주영</option>
+                    <option value="시온">시온</option>
+                    <option value="순영">순영</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>가장좋아하는 색은</b>
+                <input type="color" name="color" onchange="goColor()">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 키는 몇cm</b>
+                <input type="number" name="height" min="150" max="200"
+                value="150" step="2" onchange="goHeight(this.value)">cm
+
+                <span id="outh">0</span>cm
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 몸무게는 몇 kg</b>
+                <input type="number" name="weight" min="40" max="100"
+                value="50" step="2" onchange="goWeight(this.value)">kg
+
+                <span id="out1">0</span>kg
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b>당신의 생년원일</b>
+                <input type="date" name="day" onchange="goDate()">
+
+                <span id="out2"></span>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input type="button" value="서버에전송" onclick="printing()">
+            </td>
+        </tr>
+    </table>
+    <div id="totout"></div>
+</form>
+</body>
+</html>

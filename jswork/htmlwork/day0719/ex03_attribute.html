@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/buttonStyle.css">
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //id로 해당 요소값읽기
+            var myimg1=document.getElementById("myimg1");
+            var myimg2=document.getElementById("myimg2");
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+            var btninit=document.getElementById("btninit");
+
+            //읽어온 객체에 이벤트 부여하기
+            btn1.onclick=function(){
+                //alert("이벤트시작!!");
+
+                //속성값읽어오기
+                //myimg1.getAttribute("src");
+
+                //속성값 변경
+                myimg1.setAttribute("src","../flower_ani/2.jpg");
+                myimg2.setAttribute("src","../flower_ani/3.jpg");
+            }
+
+            btn2.onclick=function(){
+                myimg1.setAttribute("src","../flower_ani/4.jpg");
+                myimg2.setAttribute("src","../flower_ani/5.jpg");
+            }
+
+            //스타일시트로 너비주면 변경도 스타일시트로
+            //myimg1.style.width="300px";
+
+            btninit.onclick=function(){
+                myimg1.setAttribute("src","../flower_ani/1.jpg");
+                myimg2.setAttribute("src","../flower_ani/11.jpg");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h4>이미지 2개</h4>
+    <img src="../flower_ani/1.jpg" id="myimg1">
+    <img src="../flower_ani/11.jpg" id="myimg2">
+
+    <hr>
+    <button type="button" id="btn1" class="btn btn-green">이미지변경#1</button>
+    <button type="button" id="btn2" class="btn btn-pink">이미지변경#2</button>
+    <button type="button" id="btninit" class="btn btn-yellow">원래대로</button>
+</body>
+</html>
