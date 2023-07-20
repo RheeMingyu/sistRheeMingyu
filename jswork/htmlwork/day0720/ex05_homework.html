@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/0720homework.css">
+    <style>
+        #out{
+            width: 150px;
+            height: 70px;
+            border: 1px solid gray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 1.만화이미지 01.png~10.png까지 출력하세요(for문 이용) -->
+    <script>
+        var arr=new Array(10);
+        for(var i=0;i<arr.length;i++)
+        {
+            if(i<10)
+                arr[i]="<img src='../만화이미지/0"+(i+1)+".png'>"
+            else
+                arr[i]="<img src='../만화이미지/"+(i+1)+".png'>"
+        }
+        for(var i=0;i<arr.length;i++)
+            document.write(arr[i]);
+    </script>
+
+    <!-- 2.음식사진 1.jpg를 img태그로 나타낸후 id를 img1으로 주고
+        그아이디로 이벤트 추가합니다
+        사진에 마우스를 올리면 3.jpg로 바뀌고 클릭하면 5.jpg로 바뀌며
+        마우스를 벗어나면 다시 원래사진으로 돌아가게 이벤트 추가 -->
+    <script>
+        window.onload=function(){
+            document.getElementById("img1").onmouseover=function(){
+                this.src="../flower_ani/3.jpg";
+            }
+            document.getElementById("img1").onmouseout=function(){
+                this.src="../flower_ani/1.jpg";
+            }
+            document.getElementById("img1").onclick=function(){
+                this.src="../flower_ani/5.jpg";
+            }
+        }
+    </script>
+    <img src="../flower_ani/1.jpg" id="img1" width="250" height="170"><br>
+
+    <!-- 3.img로 width=200 height=180 으로 사진(아무거나) body에 넣은후
+        이미지를 클릭하면 아래 div태그안에 각종정보(src,width,height)를 얻어서
+        출력하시오(getAttribute,innerHTML 사용) -->
+    <script>
+        function evt(){
+            document.getElementById("out").innerHTML=
+                "src="+document.getElementById("imgclick").getAttribute("src")+
+                "<br>width="+document.getElementById("imgclick").getAttribute("width")+
+                "<br>heigth="+document.getElementById("imgclick").getAttribute("height");
+        }
+    </script>
+    <img src="../Food/f11.png" width="200" height="180" onclick="evt()" id="imgclick">
+    <div id="out"></div>
+
+    <!-- 4.버튼을 하나 만든후 클릭하면 prompt창에 이름을 입력받아서 div태그안에
+        "내이름은 ***입니다"라고 출력하세요
+        (div에 class=bts라고 준후 css로 예쁘게 스타일 적용할것) -->
+    <script>
+        function hwfinish(){
+            var myName=prompt("이름을 입력하시오","이름");
+            document.getElementById("output").innerHTML="내이름은 "+myName+"입니다";
+        }
+    </script>
+    <input type="button" value="이름" onclick="hwfinish()">
+    <div class="bts" id="output"></div>
+</body>
+</html>

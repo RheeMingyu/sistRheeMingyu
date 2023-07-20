@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/buttonStyle.css">
+    <style>
+        #result{
+            width: 500px;
+            height: 150px;
+            line-height: 150px;
+            font-size: 22px;
+            text-align: center;
+            border: 2px solid gray;
+            margin-top: 20px;
+            background: url("../flower_ani/star9.png") no-repeat right bottom;
+            background-size: 50px 60px;
+        }
+        #imga{
+            border: 5px inset tomato;
+            margin: 30px 150px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            //div요소값
+            var r=document.getElementById("result");
+
+            //img요소값
+            var photo=document.getElementById("imga");
+
+            //버튼1이벤트
+            document.getElementById("btn1").onclick=function(){
+                //사진의 현재 width값
+                var width=photo.getAttribute("width");
+                //프롬프트 창에 이미지너비를 입력
+                //취소시(null)..이미지변경안할래요 라는 경고창
+                var wth=prompt("이미지 너비를 입력해주세요",width);
+                if(wth==null)
+                    alert("이미지 너비 변경 안할래요");
+                else if(wth=="")
+                    alert("다시 입력해주세요");
+                else
+                    photo.setAttribute("width",wth);
+            }
+
+            //이벤트 2버튼 누르면 prompt창에 1~20사이의 사진번호를 입력해주세요
+            //취소시 경고창에 지금사진이 좋아요 안바꿀래요
+            //21번을 누르면 1~20까지밖에 없다구요..함수종료(return)
+            //1이라고 하면 현재사진이 1로바뀐다
+            document.getElementById("btn2").onclick=function(){
+                var n=prompt("1~20사이의 사진번호를 입력해주세요")
+
+                if(n==null)
+                    alert("지금사진이 좋아요 안 바꿀래요");
+                else if(n=="")
+                    alert("다시 입력해주세요");
+                else if(n<=0||n>20)
+                {
+                    alert("1~20까지밖에 없다구요..");
+                    return false;
+                }
+                else if(0<n<10)
+                    //photo.setAttribute("src","../만화이미지/0"+n+".png");
+                    imgb.innerHTML="<img src='../만화이미지/0"+n+".png' width='250' id='imga'>"
+                else
+                    //photo.setAttribute("src","../만화이미지/"+n+".png");
+                    imgb.innerHTML="<img src='../만화이미지/"+n+".png' width='250' id='imga'>"
+            }
+
+            //버튼3
+            document.getElementById("btn3").onclick=function(){
+
+                //innerText: text를 넣는다(태그가 노출)
+                //innerHTML: html을 넣는다(태그가 적용)
+
+                var name=prompt("당신의 이름은?");
+                
+                if(name==null)
+                    document.getElementById("result").innerText="<u>취소를 눌렀네요</u>";
+                else
+                    document.getElementById("result").innerHTML="<u>당신의 이름은 "+name+"이군요</u>";
+            }
+        }
+    </script>
+</head>
+<body>
+    <button type="button" class="btn btn-green" id="btn1">이벤트#1</button>
+    <button type="button" class="btn btn-pink" id="btn2">이벤트#2</button>
+    <button type="button" class="btn btn-yellow" id="btn3">이벤트#3</button>
+    <div id="result">테스트</div>
+    <div id="imgb">
+        <img src="../만화이미지/10.png" width="250" id="imga">
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container div img{
+            border: 10px inset gray;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            document.getElementById("btn1").onclick=function(){
+                document.getElementById("img1").setAttribute("src","../만화이미지/01.png");
+            }
+            document.getElementById("btn2").onclick=function(){
+                document.getElementById("img1").setAttribute("src","../만화이미지/02.png");
+            }
+            document.getElementById("btn3").onclick=function(){
+                document.getElementById("img1").setAttribute("src","../만화이미지/03.png");
+            }
+            document.getElementById("btn4").onclick=function(){
+                var w=parseInt(document.getElementById("img1").getAttribute("width"));
+                w+=10;
+                document.getElementById("img1").setAttribute("width",w);
+            }
+            document.getElementById("btn5").onclick=function(){
+                var w=parseInt(document.getElementById("img1").getAttribute("width"));
+                w-=10;
+                document.getElementById("img1").setAttribute("width",w);
+            }
+            //아래문제
+            var selimage=document.getElementById("selimage");
+            var photo=document.getElementById("photo");
+
+        //이코드 넣은이유: select이름과 사진을 동일하게 하기위해서
+            //alert(selimage.value); //현재 선택된 이미지
+            var init_img=selimage.value;
+
+            //현재사진의 src속성을 변경한다
+            photo.setAttribute("src",init_img);
+
+            //select 이벤트 _change
+            selimage.onchange=function(){
+                //모든 이벤트 함수에는 이벤트발생객체에 대한 this라는 변수가 기본적으로 존재
+                console.log(this.value);
+
+                //사진의 src에 this.value를 적용
+                photo.setAttribute("src",this.value);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <h3>이미지변경및 크기</h3>
+    <button type="button" id="btn1">남바완</button>
+    <button type="button" id="btn2">남바투</button>
+    <button type="button" id="btn3">남바쓰리</button>
+    <button type="button" id="btn4">점점크게</button>
+    <button type="button" id="btn5">점점작게</button>
+    <hr>
+    <img src="../Food/f1.png" width="300" id="img1" border="1">
+
+    <hr>
+    <div class="container">
+        <div class="buttons">
+            <button type="button" id="btnsmall">점점작게</button>
+            <button type="button" id="btnlarge">점점크게</button>
+            <b style="margin-left: 20px;">사진선택</b>
+            <select id="selimage">
+                <option value="../만화이미지/04.png" selected>남바포</option>
+                <option value="../만화이미지/05.png">남바파이브</option>
+                <option value="../만화이미지/06.png">남바식스</option>
+                <option value="../만화이미지/07.png">남바세븐</option>
+            </select>
+        </div>
+
+        <div>
+            <img src="" id="photo" width="300">
+        </div>
+    </div>
+</body>
+</html>
