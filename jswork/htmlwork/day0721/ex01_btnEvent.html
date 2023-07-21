@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #photo{
+            position: absolute;
+            left: 500px;
+            top: 200px;
+            width: 400px;
+            height: 500px;
+            border: 10px groove gold;
+        }
+        #btnRandom{
+            margin-left: 400px;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <input type="image" src="../Food/f13.png" id="btnRandom">
+    <b>이미지버튼을 누르면 이미지 바뀝니다</b>
+    <img src="" id="photo">
+
+    <script>
+        //배열에 여러개 이미지 넣는다
+        var imgArr=new Array();
+        
+        imgArr.push("../Food/f1.png");
+        imgArr.push("../Food/f2.png");
+        imgArr.push("../Food/f3.png");
+        imgArr.push("../Food/f4.png");
+        imgArr.push("../Food/f5.png");
+        imgArr.push("../Food/f6.png");
+        imgArr.push("../Food/f7.png");
+        imgArr.push("../Food/f8.png");
+        imgArr.push("../Food/f9.png");
+        imgArr.push("../Food/f10.png");
+
+        //0~9사이의 난수값을 얻는다
+        var ran=parseInt(Math.random()*10);
+        //photo에 경로값을 수정해준다
+        document.getElementById("photo").setAttribute("src",imgArr[ran]);
+        //이벤트..이미지버튼을 누르면0~9사이의 난수값을 얻어서 photo 경로값 수정
+        btnRandom.onclick=function(){
+            var ran=parseInt(Math.random()*10);
+            document.getElementById("photo").setAttribute("src",imgArr[ran]);
+        }
+    </script>
+</body>
+</html>

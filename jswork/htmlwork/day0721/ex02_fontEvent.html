@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #out{
+            font-family: Noto Serif KR;
+            font-weight: bold;
+            padding: 20px;
+            width: 500px;
+            margin-top: 50px;
+            border: 0px solid black;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            /*버튼이벤트 클릭시 3px씩 감소 증가되도록
+              9보다 작아지면 "더이상 줄일수없다"후에 종료
+              60보다 커지면 경고 "더이상 커질수없다:후에 종료
+              두개의 버튼클릭시마다 현재글꼴사이즈를 fsize 출력*/
+            var fsize=document.getElementById("fsize");
+            var out=document.getElementById("out");
+            var btn1=document.getElementById("btn1");
+            var btn2=document.getElementById("btn2");
+
+            fsize.innerHTML="현재 글꼴 사이즈는 40 px 입니다";
+
+            btn1.onclick=function(){
+                var outsize=parseInt(out.style.fontSize); //단위 제거
+                //alert(outsize);
+                outsize-=3;
+
+                if(outsize<9)
+                {
+                    alert("더이상 줄일수 없어요");
+                    return;
+                }
+
+                out.style.fontSize=outsize+"px";
+                fsize.innerHTML="현재 글꼴 사이즈는 "+outsize+" px 입니다";
+            }
+            btn2.onclick=function(){
+                var outsize=parseInt(out.style.fontSize);
+                outsize+=3;
+
+                if(outsize>60)
+                {
+                    alert("더이상 늘릴수 없어요");
+                    return;
+                }
+
+                out.style.fontSize=outsize+"px";
+                fsize.innerHTML="현재 글꼴 사이즈는 "+outsize+" px 입니다";
+            }
+
+            //글자색
+            document.getElementById("mycolor").onchange=function(){
+                //alert(this.value);
+                out.style.color=this.value;
+            }
+            //배경색
+            document.getElementById("mycolor2").onchange=function(){
+                out.style.backgroundColor=this.value;
+            }
+
+            document.getElementById("selwidth").onchange=function(){
+                //alert(this.value);
+                out.style.borderWidth=this.value+"px";
+            }
+            document.getElementById("selstyle").onchange=function(){
+                //alert(this.value);
+                out.style.borderStyle=this.value;
+            }
+        }
+    </script>
+</head>
+<body>
+    <button type="button" id="btn1">점점작게</button>
+    <button type="button" id="btn2">점점크게</button>
+    <hr>
+    <div id="fsize"></div>
+    <b>글자색 선택</b>
+    <input type="color" value="#ffccff" id="mycolor">
+    <br>
+    <b>배경색 선택</b>
+    <input type="color" value="#cc00ff" id="mycolor2">
+    <br>
+    <b>테두리선 굵기 선택</b>
+    <select id="selwidth" style="width: 120px;">
+        <option value="0">없음</option> <!--value가 있으면 value우선, 없으면 입력값 우선-->
+        <option>1</option>
+        <option>3</option>
+        <option>5</option>
+        <option>7</option>
+        <option>9</option>
+    </select>
+    <b>테두리선 스타일 선택</b>
+    <select id="selstyle" style="width: 120px;">
+        <option>solid</option>
+        <option>inset</option>
+        <option>groove</option>
+        <option>dotted</option>
+    </select>
+    <div id="out" style="font-size: 40px;">
+        오늘은 불타는 금요일입니다
+    </div>
+</body>
+</html>

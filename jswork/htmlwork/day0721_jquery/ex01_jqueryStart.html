@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+    <script>
+        //$(document).ready(function(){}) //head 처음로딩시 호출..자바스크립트 window.onload와 같다
+
+        $(function(){
+            //css함수:style변경
+            //attr(속성): 해당요소의 속성값 반환
+            //attr(속성,값): 속성값을 해당값으로 변경
+            //$(selector): $안에 접근을 위한 요소값을 selector라고 한다
+
+            //alert("load");
+
+            //모든 b태그의 글꼴을 18pt로 변경하라
+            $("b").css("font-size","28pt");
+
+            //클래스가 happy인 태그의 배경색을 바꾸시오
+            $("b.happy").css("background-color","aqua");
+
+            //모든 h2태그의 보더를 변경;글자색도 변경
+            //방법1
+            //$("h2").css("border","3px inset orange").css("color","red");
+            //방법2
+            $("h2").css({
+                "border":"10px double pink",
+                "color":"magenta"
+            })
+
+            //모든 이미지 속성 src를 변경하라
+            //$("img").attr("src","../Food/f1.png");
+            //이미지 _ width_100
+            //$("img").css("width","100px");
+
+            //위의 코드 한줄로
+            //$("img").attr("src","../Food/f2.png").css("width","100px");
+
+            //스타일 여러개로
+            $("img").attr("src","../Food/f3.png").css({
+                "width":"150px",
+                "border":"2px dotted green"
+            })
+
+            //span태그중에서 class가 nice인 태그의 배경색,글자색,글자크기 변경
+            $("span.nice").css({
+                "color":"brown",
+                "background-color":"yellow",
+                "font-size":"2em"
+            })
+
+            //Q1.img태그중에서 클래스명이 yourimg의이미지를 변경하고
+            //width,border-radius,border,box-shadow를 변경하세요
+            $("img.yourimg").attr("src","../Food/f10.png").css({
+                "width":"200px",
+                "border":"10px inset pink",
+                "border-radius":"20px",
+                "box-shadow":"10px 10px 0 gray"
+            });
+            //Q2.아이디가 myimg의 너비변경하고 title을 '오늘은 불금!!'으로 변경하라
+            $("#myimg").css("width","50px").attr({
+                "src":"../만화이미지/01.png",
+                "title":"오늘은 불금!!"
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <h2>jquery에서 가장많이 사용하는 함수 css,attr</h2>
+    <b class="happy">B tag Class Happy</b>
+    <br>
+    <span class="nice">Span Tag Class Nice</span>
+    <br>
+    <h2 class="happy">H2 Tag Class Happy</h2>
+    <b>내가 좋아하는 이미지들</b>
+    <img src="">
+    <img src="" class="yourimg">
+    <img src="" id="myimg">
+    <img src="">
+
+</body>
+</html>
