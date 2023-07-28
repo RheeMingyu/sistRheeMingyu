@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <h3>Q.세개의 이미지에 마우스를 올리면 f20으로 바뀌며<br>
+    마우스가 벗어나면 원래이미지로 돌아가게 하세요</h3>
+    <img src="../만화이미지/02.png" width="150">
+    <img src="../만화이미지/03.png" width="150">
+    <img src="../만화이미지/04.png" width="150">
+
+    <script>
+        $("img").mouseover(function(){
+            imgO=$(this).attr("src");
+            $(this).attr("src","../Food/f20.png");
+        });
+        $("img").mouseout(function(){
+            $(this).attr("src",imgO);
+        });
+    </script>
+</body>
+</html>
