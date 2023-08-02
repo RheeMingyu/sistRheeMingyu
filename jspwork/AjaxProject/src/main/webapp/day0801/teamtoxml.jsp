@@ -5,7 +5,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="oracle.net.nt.ConnectDescription"%>
-<%@page import="oracle_db.DBConnect"%>
+<%@page import="oracle.db.DBConnect"%>
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <data>
@@ -27,7 +27,7 @@
 			String num=rs.getString("num");
 			String name=rs.getString("name");
 			String addr=rs.getString("addr");
-			String writeday=sdf.format(rs.getTimestamp("writeday"));
+			String writeday=sdf.format(rs.getTimestamp("writeday")); //getTimestamp(),getDate() 같은기능
 			%>
 			
 			<team num="<%=num %>">

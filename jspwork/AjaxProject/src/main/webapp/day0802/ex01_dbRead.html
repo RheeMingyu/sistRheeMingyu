@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<style>
+	table{
+		text-align: center;
+	}
+</style>
+<body>
+	<button type="button" id="btn1" class="btn btn-outline-info">xml읽기(myfood)</button>
+	<button type="button" id="btn2" class="btn btn-outline-info">json읽기()</button>
+	<div id="show">출력하는곳</div>
+	
+	<script>
+		$("#btn1").click(function(){
+			$("#show").empty();
+			var s="";
+			$.ajax({
+				type:"get",
+				url:"ex01_foodtoxml.jsp",
+				dataType:"xml",
+				success:function(data){
+					$(data).find("myfood").each(function(i,e){
+						s+="<div class='alert alert-info' style='float: left;'>";
+						s+="번호:"+$(e).attr("num")+"<br>";
+						s+="음식명:"+$(e).find("foodname").text()+"<br>";
+						s+="사진:<img src='"+$(e).find("foodphoto").text()+"' width=50 height-50><br>";
+						s+="가격:"+$(e).find("price").text()+"<br>";
+						s+="수량:"+$(e).find("cnt").text()+"<br>";
+						s+="</div>";
+					});
+					$("#show").append(s);
+				}
+			});
+		});
+		
+		$("#btn2").click(function(){
+			$("#show").empty();
+			var s="";
+			$.ajax({
+				type:"get",
+				url:"ex01_shoptojson.jsp",
+				dataType:"json",
+				success:function(data){
+					s+="<table class='table table-bordered' style='width:700px' align='center'>";
+					s+="<tr><th>번호</th><th>상품명</th><th>색상</th><th>가격</th><th>사진</th></tr>";
+					
+					$.each(data,function(i,e){
+						s+="<tr>";
+						s+="<td>"+e.num+"</td>";
+						s+="<td>"+e.sangpum+"</td>";
+						s+="<td>"+e.color+"</td>";
+						s+="<td>"+e.price+"</td>";
+						s+="<td><img src='"+e.imgname+"' width='100' height='100'></td>";
+						s+="</tr>";
+					});
+					s+="</table>";
+					$("#show").append(s);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
