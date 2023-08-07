@@ -1,3 +1,5 @@
+<%@page import="model.sinsang.SinsangDto"%>
+<%@page import="model.sinsang.SinsangDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,26 +11,34 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
+<%
+	String num=request.getParameter("num");
+	SinsangDao dao=new SinsangDao();
+	SinsangDto dto=dao.getData(num);
+%>
 <body>
-	<form action="insertAction.jsp" method="post">
+	<form action="updateAction.jsp" method="post">
+	
+	<!-- hidden은 위치상관없다 form안에만 있으면 됨 -->
+	<input type="hidden" name="num" value="<%=num %>">
 		<table class="table table-bordered" style="width: 400px;">
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" name="name" style="width: 150px" placeholder="이름입력"
-					 required="required" class="form-control">
+					<input type="text" name="name" style="width: 150px"
+					value="<%=dto.getName()%>">
 				</td>
 			</tr>
 			<tr>
 				<th>주소</th>
 				<td>
-					<input type="text" name="addr" style="width: 250px" placeholder="주소입력"
-					 required="required" class="form-control">
+					<input type="text" name="addr" style="width: 250px"
+					value="<%=dto.getAddr()%>">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="전송" class="btn btn-info">
+					<input type="submit" value="수정" class="btn btn-warning">
 					<input type="button" value="목록" onclick="location.href='list.jsp'"
 					 class="btn btn-success">
 				</td>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<%@page import="oracle_db.DBConnect"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="oracle.net.nt.ConnectDescription"%>
-<%@page import="oracle.db.DBConnect"%>
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <data>

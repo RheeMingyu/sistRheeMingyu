@@ -39,3 +39,30 @@ create table sinsang(num number(5) primary key,
 name varchar2(20),
 addr varchar2(30),
 sdate date);
+
+--myteam
+create table myteam(num number(3) primary key,
+tname varchar2(20),
+driver varchar2(10),
+taddr varchar2(50),
+writeday date);
+
+select * from myteam;
+
+create table mymall(no number(3) primary key,
+sangpum varchar2(30),
+photo varchar2(50),
+price number(5),
+ipgoday varchar2(20),
+writeday date);
+select * from mymall;
+
+create table intro(intro_num number(5) primary key,
+intro_name varchar2(50),
+intro_blood varchar2(30),
+intro_hp varchar2(50),
+intro_city varchar2(30),
+gaipday date);
+select * from intro;
+show escape;
+set escape on;

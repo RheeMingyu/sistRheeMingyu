@@ -5,7 +5,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="oracle.net.nt.ConnectDescription"%>
-<%@page import="oracle.db.DBConnect"%>
+<%@page import="oracle_db.DBConnect"%>
 <%@ page language="java" contentType="text/xml; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <data>

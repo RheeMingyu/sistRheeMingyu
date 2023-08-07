@@ -10,27 +10,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="insertAction.jsp" method="post">
-		<table class="table table-bordered" style="width: 400px;">
+	<form action="addAction.jsp" method="post">
+		<table class="table table-bordered" style="width: 300px">
 			<tr>
 				<th>이름</th>
 				<td>
-					<input type="text" name="name" style="width: 150px" placeholder="이름입력"
-					 required="required" class="form-control">
+					<input type="text" name="name" class="form-control"
+					required="required" style="width: 120px;" placeholder="이름">
+				</td>
+			</tr>
+			<tr>
+				<th>운전면허</th>
+				<td>
+					<input type="checkbox" name="driver">운전면허여부
 				</td>
 			</tr>
 			<tr>
 				<th>주소</th>
 				<td>
-					<input type="text" name="addr" style="width: 250px" placeholder="주소입력"
-					 required="required" class="form-control">
+					<input type="text" name="addr" class="form-control"
+					required="required" style="width: 180px;" placeholder="주소">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="전송" class="btn btn-info">
-					<input type="button" value="목록" onclick="location.href='list.jsp'"
-					 class="btn btn-success">
+					<button type="submit" class="btn btn-info">팀원정보저장</button>
+					<button type="button" class="btn btn-success"
+					onclick="location.href='list.jsp'">목록으로이동</button>
 				</td>
 			</tr>
 		</table>

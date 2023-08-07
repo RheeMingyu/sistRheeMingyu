@@ -10,27 +10,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="insertAction.jsp" method="post">
-		<table class="table table-bordered" style="width: 400px;">
+	<form action="uploadAction.jsp" method="post" enctype="multipart/form-data">
+		<table class="table table-bordered" style="width: 500px">
 			<tr>
-				<th>이름</th>
+				<th width="100">이름</th>
 				<td>
-					<input type="text" name="name" style="width: 150px" placeholder="이름입력"
-					 required="required" class="form-control">
+					<input type="text" name="name" class="form-control" style="width: 150px">
 				</td>
 			</tr>
 			<tr>
-				<th>주소</th>
+				<th width="100">제목</th>
 				<td>
-					<input type="text" name="addr" style="width: 250px" placeholder="주소입력"
-					 required="required" class="form-control">
+					<input type="text" name="title" class="form-control" style="width: 350px">
+				</td>
+			</tr>
+			<tr>
+				<th width="100">파일</th>
+				<td>
+					<input type="file" name="uploadFile">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="전송" class="btn btn-info">
-					<input type="button" value="목록" onclick="location.href='list.jsp'"
-					 class="btn btn-success">
+					<button type="submit" class="btn btn-success">업로드</button>
 				</td>
 			</tr>
 		</table>
