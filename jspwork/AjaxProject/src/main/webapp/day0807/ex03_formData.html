@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<body>
+	<div style="margin: 50px">
+		<b>사진선택:</b>
+		<select id="selImg">
+			<option value="01">클로버</option>
+			<option value="02">마리오</option>
+			<option value="03">콘솔</option>
+			<option value="04">별약</option>
+			<option value="05">하뚜</option>
+		</select>
+		<br>
+		<input type="text" id="like1">
+		<input type="text" id="like2">
+		<input type="text" id="like3">
+		
+		<button type="button" id="btn1">데이터전송</button>
+		<br>
+		<div id="show"></div>
+	</div>
+	
+	<script>
+		$("#btn1").click(function(){
+			var photono=$("#selImg").val();
+			var photoname=$("#selImg option:selected").text();
+			var like1=$("#like1").val();
+			var like2=$("#like2").val();
+			var like3=$("#like3").val();
+			
+			var s="photono="+photono+"&photoname="+photoname+
+					"&like1="+like1+"&like2="+like2+"&like3="+like3;
+			//alert(s);
+			$.ajax({
+				type:"get",
+				url:"ex03_receive.jsp",
+				dataType:"json",
+				data:s,
+				success:function(res){
+					var str="이름:"+res.name+"<br>";
+					str+="<img src='../image/logoImg/icon"+res.photo+".png'><br>";
+					str+="평점1:"+res.like1+"<br>";
+					str+="평점2:"+res.like2+"<br>";
+					str+="평점3:"+res.like3+"<br>";
+					str+="총점:"+res.sum+"<br>";
+					str+="평균:"+res.avg+"<br>"
+					
+					$("#show").html(str);
+				}
+			});
+		});
+	</script>
+</body>
+</html>

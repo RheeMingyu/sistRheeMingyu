@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Nanum+Pen+Script&family=Noto+Serif+KR:wght@200&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<title>Insert title here</title>
+</head>
+<style>
+	div.list,div.detail,div.updateform{
+		position: absolute;
+		left: 100px;
+		top: 100px;
+	}
+	div.writeform{
+		position: absolute;
+		left: 1000px;
+		top: 150px;
+	}
+	span.detail{
+		cursor: pointer;
+	}
+	div.list *,div.writeform *,div.detail *,div.updateform *{
+		font-family: Noto Serif KR;
+		font-size: 13pt;
+	}
+</style>
+<body>
+	<script>
+		$(function(){
+			list();
+			
+			$("div.writeform").hide();
+			$("div.updateform").hide();
+			
+			$("#btnwrite").click(function(){
+				$("div.writeform").slideToggle('slow');
+			});
+			
+			$("#btnadd").click(function(){
+				var writer=$("#writer").val();
+				var subject=$("#subject").val();
+				var avatar=$("#avatar").val();
+				var story=$("#story").val();
+				
+				$.ajax({
+					type:"post",
+					url:"insertBoard.jsp",
+					dataType:"html",
+					data:{"writer":writer,"subject":subject,"avatar":avatar,"story":story},
+					success:function(data){
+						list();
+						$("#writer").val("");
+						$("#subject").val("");
+						//$("#avatar").val("");
+						$("#story").val("");
+						
+						$("div.writeform").hide();
+						$("div.updateform").hide();
+					}
+				});
+			});
+			
+			$(document).on("click","span.detail",function(){
+				var num=$(this).attr("num");
+				//alert(num);
+				$.ajax({
+					type:"get",
+					url:"detailBoard.jsp",
+					dataType:"json",
+					data:{"num":num},
+					success:function(data){
+						var s="<table class='table table-bordered'>";
+							s+="<tr><th>시퀀스</th><td>"+num+"</td></tr>";
+							s+="<tr><th>제목</th><td id='dsubject'>"+data.subject+"</td></tr>";
+							s+="<tr><th>작성자</th><td id='dwriter'>"+data.writer+"</td></tr>";
+							s+="<tr><th>작성일</th><td>"+data.writeday+"</td></tr>";
+							s+="<tr><th>내용</th><td><pre id='dstory'>"+data.story+"</pre></td></tr>";
+							s+="<tr><th>이미지</th><td><img src='"+data.avatar+"' width='60' id='dimg'></td></tr>";
+							s+="<tr><td colspan='2' align='center'><button type=button class='btn btn-default' num='"+num+"'>글쓰기</button>";
+							s+="<button type='button' class='btn btn-info' id='btnmod' num='"+num+"'>수정</button>&nbsp";
+							s+="<button type='button' class='btn btn-danger' id='btndel' num='"+num+"'>삭제</button>&nbsp";
+							s+="<button type='button' class='btn btn-success' id='btnlist'>목록</button></td></tr>";
+							s+="</table>";
+						
+						$("div.list").hide();
+						$("div.detail").html(s);
+						$("div.detail").show();
+						$("div.updateform").hide();
+					}
+				});
+			});
+			
+			$(document).on("click","#btnlist",function(){
+				$("div.detail").hide();
+				$("div.list").show();
+				$("div.updateform").hide();
+			});
+			
+			$(document).on("click","#btndel",function(){
+				var num=$(this).attr("num");
+				
+				$.ajax({
+					type:"post",
+					data:{"num":num},
+					url:"deleteBoard.jsp",
+					dataType:"html",
+					success:function(data){
+						list();
+						$("div.list").show();
+						$("div.detail").hide();
+						$("div.updateform").hide();
+					}
+				});
+			});
+			
+			$(document).on("click","#btnmod",function(){
+				var num=$(this).attr("num");
+				//alert(num);
+				$.ajax({
+					type:"get",
+					url:"detailBoard.jsp",
+					dataType:"json",
+					data:{"num":num},
+					success:function(data){
+						$("div.updateform").show();
+						$("div.detail").hide();
+						$("#unum").val(num);
+						$("#uwriter").val(data.writer);
+						$("#usubject").val(data.subject);
+						$("#ustory").val(data.story);
+						$("#uavatar").val(data.avatar);
+					}
+				});
+			});
+			
+			$(document).on("click","#btnupdate",function(){
+				var num=$("#unum").val();
+				var writer=$("#uwriter").val();
+				var subject=$("#usubject").val();
+				var story=$("#ustory").val();
+				var avatar=$("#uavatar").val();
+				
+				$.ajax({
+					type:"get",
+					url:"updateBoard.jsp",
+					dataType:"json",
+					data:{"unum":num,"uwriter":writer,"usubject":subject,"ustory":story,"uavatar":avatar},
+					success:function(data){
+						list();
+						$("div.updateform").hide();
+						$("#dwriter").text(data.writer);
+						$("#dsubject").text(data.subject);
+						$("#dstory").text(data.story);
+						$("#dimg").attr("src",data.avatar);
+						$("div.detail").show();
+					}
+				});
+			});
+			
+			$(document).on("click","button.btn-default",function(){
+				$("div.writeform").slideToggle('slow');
+			});
+		});
+		
+		function list(){
+			$.ajax({
+				type:"get",
+				url:"listBoard.jsp",
+				dataType:"json",
+				success:function(data){
+					//alert(data.length);
+					
+					//제목출력
+					var s="<table class='table table-bordered' style='width:700px'>";
+						s+="<caption align='top'><b>AJAX게시판</b></caption>";
+						s+="<tr class='table-info'>";
+						s+="<th width='60'>번호</th>";
+						s+="<th width='260'>제목</th>";
+						s+="<th width='120'>작성자</th>";
+						s+="<th width='160'>작성일</th>";
+						s+="</tr>";
+						if(data.length==0)
+						{
+							s+="<tr>";
+							s+="<td colspan='4' align='center'>";
+							s+="<b>저장된 글이 없습니다</b></td></tr>";
+						}
+						else
+						{
+							$.each(data,function(i,e){
+								s+="<tr>";
+								s+="<td align='center'>"+(i+1)+"</td>";
+								s+="<td>";
+								s+="<span num='"+e.num+"' class='detail'>"+e.subject+"</td>";
+								s+="<td>"+e.writer+"</td>";
+								s+="<td>"+e.writeday+"</td>";
+							});
+						}
+						s+="</table>";
+						$("#board").html(s);
+				}
+			});
+		}
+	</script>
+	
+	<div class="list">
+		<button type="button" class="btn btn-info" id="btnwrite">글쓰기</button>
+		<div id="board">list</div>
+	</div>
+	
+	<div class="writeform">
+		<form>
+			<table class="table table-bordered" style="width: 300px;">
+				<caption align="top"><b>게시글추가</b></caption>
+				<tr>
+					<th>작성자</th>
+					<td>
+						<input type="text" id="writer" style="width: 120px;" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>
+						<input type="text" id="subject" style="width: 120px;" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>상태이미지</th>
+					<td>
+						<select id="avatar" class="form-control" style="width: 120px;">
+							<option value="../image/logoImg/icon01.png">클로버</option>
+							<option value="../image/logoImg/icon02.png">마리오</option>
+							<option value="../image/logoImg/icon03.png">콘솔</option>
+							<option value="../image/logoImg/icon04.png">별약</option>
+							<option value="../image/logoImg/icon05.png">하뚜</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<textarea style="width: 290px;height: 80px;"
+						id="story" class="form-control"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="button" class="btn btn-danger" id="btnadd">DB추가</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<div class="updateform">
+		<form>
+			<input type="hidden" id="unum">
+			<table class="table table-bordered" style="width: 300px;">
+				<caption align="top"><b>게시글추가</b></caption>
+				<tr>
+					<th>작성자</th>
+					<td>
+						<input type="text" id="uwriter" style="width: 120px;" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>제목</th>
+					<td>
+						<input type="text" id="usubject" style="width: 120px;" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<th>상태이미지</th>
+					<td>
+						<select id="uavatar" class="form-control" style="width: 120px;">
+							<option value="../image/logoImg/icon01.png">클로버</option>
+							<option value="../image/logoImg/icon02.png">마리오</option>
+							<option value="../image/logoImg/icon03.png">콘솔</option>
+							<option value="../image/logoImg/icon04.png">별약</option>
+							<option value="../image/logoImg/icon05.png">하뚜</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<textarea style="width: 290px;height: 80px;"
+						id="ustory" class="form-control"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="button" class="btn btn-danger" id="btnupdate">DB수정</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<div class="detail"></div>
+</body>
+</html>
