@@ -19,7 +19,7 @@ SimpleGuestDto dto=dao.getData(num);
 %>
 <body>
 	<script>
-		var pass=prompt("authentificate your password");
+		var pass=prompt("authenticate your password");
 		console.log(<%=dto.getPass() %>);
 	
 		if(pass==<%=dto.getPass() %>)

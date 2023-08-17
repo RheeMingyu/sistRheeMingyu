@@ -16,11 +16,11 @@ public class DBConnect {
 	public DBConnect() {
 		try {
 			Class.forName(driver);
-			System.out.println("오라클 드라이버 성공");
+			System.out.println("MySQL 드라이버 성공");
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("오라클 드라이버 실패");
+			System.out.println("MySQL 드라이버 실패");
 		}
 	}
 	
@@ -33,7 +33,7 @@ public class DBConnect {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("오라클 연결실패: url,계정,비밀번호 확인 바랍니다"+e.getMessage());
+			System.out.println("MySQL 연결실패: url,계정,비밀번호 확인 바랍니다"+e.getMessage());
 		}
 		
 		return conn;
