@@ -301,20 +301,19 @@ public class MyschoolDao {
 		return dto;
 	}
 	
-	public void updateMyschool_stu(MyschoolDto dto) { // 교사용 개인정보 update
+	public void updateMyschool_admin(MyschoolDto dto) { // 교사용 개인정보 update
 		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="update myschool set myimg=?,mygrade=?,myclass=? where num=?";
+		String sql="update myschool set mygrade=?,myclass=? where num=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getMyimg());
-			pstmt.setString(2, dto.getMygrade());
-			pstmt.setString(3, dto.getMyclass());
-			pstmt.setString(4, dto.getNum());
+			pstmt.setString(1, dto.getMygrade());
+			pstmt.setString(2, dto.getMyclass());
+			pstmt.setString(3, dto.getNum());
 			
 			pstmt.execute();
 					
@@ -327,19 +326,19 @@ public class MyschoolDao {
 		
 	}
 	
-	public void updateMyschool_admin(MyschoolDto dto) { // 학생용 개인정보 update
+	public void updateMyschool_stu(MyschoolDto dto) { // 학생용 개인정보 update
 		
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
 		
-		String sql="update myschool set myimg=?,mypass=?,myhp=?,myaddr=? where num=?";
+		String sql="update myschool set mypass=?,myhp=?,myaddr=? where num=?";
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
 			
-			pstmt.setString(1, dto.getMyimg());
-			pstmt.setString(2, dto.getMygrade());
-			pstmt.setString(3, dto.getMyclass());
+			pstmt.setString(1, dto.getMypass());
+			pstmt.setString(2, dto.getMyhp());
+			pstmt.setString(3, dto.getMyaddr());
 			pstmt.setString(4, dto.getNum());
 			
 			pstmt.execute();
@@ -516,17 +515,16 @@ public class MyschoolDao {
 	      
 	      while(rs.next()) {
 	         subject[cnt]=Integer.parseInt(rs.getString(sub));
-	         System.out.println(cnt+"="+subject[cnt]);
+	         //System.out.println(cnt+"="+subject[cnt]);
 	         cnt++;
 	      }
 	      Arrays.sort(subject);
 	      for(i=0;i<tot;i++) {
-	         System.out.println(subject[i]);
-	      }
-	      for(i=0;i<tot;i++) {
-	         System.out.println(score);
+	        // System.out.println(score);
 	         if(subject[i]==Integer.parseInt(score)) {
-	            break;
+	        	 if(i==tot-1){break;}
+	        	 else if(subject[i]==subject[i+1]){continue;}
+	        	 else{break;}
 	         }
 	      }
 	      rank=tot-i;
