@@ -15,7 +15,7 @@
 	session.removeAttribute("loginok");
 	
 	//메인
-	response.sendRedirect("loginMain.jsp")
+	response.sendRedirect("loginMain.jsp");
 	%>
 </body>
 </html>
