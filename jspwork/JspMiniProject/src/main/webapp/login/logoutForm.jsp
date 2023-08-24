@@ -1,3 +1,4 @@
+<%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -9,7 +10,16 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
-<body>
+<%
+String myId=(String)session.getAttribute("myId");
 
+MemberDao dao=new MemberDao();
+String name=dao.getNameFromId(myId);
+%>
+<body>
+	<div style="background-image: url('image2/bg.png')">
+		<img src="image/cartoon/13.png"><%=name %> 님이 로그인하셨습니다
+	</div><br>
+	<button type="button" class="btn btn-danger" onclick="location.href='login/logoutProc.jsp'">로그아웃</button>
 </body>
 </html>

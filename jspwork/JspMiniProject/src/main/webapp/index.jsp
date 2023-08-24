@@ -15,7 +15,7 @@
 	}
 	div.title{
 		width: 100%;
-		height: 80px;
+		height: 220px;
 		line-height: 80px;
 		font-size: 30px;
 		font-family: Dongle;
@@ -62,7 +62,7 @@
 	}
 	%>
 <body>
-	<div class="layout title">
+	<div class="layout title" style="background-image: url('<%=root%>/image2/bgf.png');background-size:cover">
 		<jsp:include page="layout/title.jsp"/>
 	</div>
 	<div class="layout menu">

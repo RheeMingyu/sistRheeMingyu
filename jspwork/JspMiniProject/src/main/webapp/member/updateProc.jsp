@@ -1,3 +1,4 @@
+<%@page import="data.dto.MemberDto"%>
 <%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,28 +13,29 @@
 </head>
 <body>
 	<%
+	request.setCharacterEncoding("utf-8");
+	
+	String num=request.getParameter("num");
 	String id=request.getParameter("id");
 	String pass=request.getParameter("pass");
-	String checksave=request.getParameter("checksave"); //체크안하면 null
+	String name=request.getParameter("name");
+	String hp=request.getParameter("hp");
+	String addr=request.getParameter("addr");
+	String email=request.getParameter("email1")+"@"+request.getParameter("email2");
+	
+	MemberDto dto=new MemberDto();
+	dto.setNum(num);
+	dto.setId(id);
+	dto.setPass(pass);
+	dto.setName(name);
+	dto.setHp(hp);
+	dto.setAddr(addr);
+	dto.setEmail(email);
 	
 	MemberDao dao=new MemberDao();
-	boolean flag=dao.authentification(id, pass);
+	dao.updateMember(dto);
 	
-	if(flag)
-	{
-		session.setMaxInactiveInterval(60*60*3); //3시간
-		session.setAttribute("loginOk", "yes");
-		session.setAttribute("myId", id);
-		session.setAttribute("saveOk", checksave==null?null:"yes");
-		
-		response.sendRedirect("../index.jsp?main=login/loginMain.jsp");
-	}
-	else{%>
-		<script>
-			alert("아이디와 비밀번호가 일치하지 않습니다");
-			history.back();
-		</script>
-	<%}
+	response.sendRedirect("../index.jsp?main=member/myInfo.jsp");
 	%>
 </body>
 </html>

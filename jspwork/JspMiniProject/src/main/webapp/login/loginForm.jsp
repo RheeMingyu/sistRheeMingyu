@@ -10,6 +10,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+	String checksave=(String)session.getAttribute("saveOk");
+	String myId="";
+	if(checksave!=null)
+		myId=(String)session.getAttribute("myId");
+	%>
+	<div style="margin: 100px 200px">
+		<form action="login/loginProc.jsp" method="post">
+			<table class="table table-bordered" style="width: 300px">
+				<caption align="top">로그인 세션</caption>
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" name="id" class="form-control" required="required" style="width: 120px" value="<%=myId%>">
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pass" class="form-control" required="required" style="width: 120px">
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="btn btn-outline-info">로그인</button>&nbsp;<input type="checkbox" name="checksave" <%=checksave!=null?"checked":"" %>>아이디저장
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>

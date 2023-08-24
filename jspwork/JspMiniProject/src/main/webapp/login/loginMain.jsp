@@ -10,6 +10,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+	String loginOk=(String)session.getAttribute("loginOk");
+	
+	if(loginOk==null)
+	{%>
+		<jsp:include page="loginForm.jsp"/>
+	<%}else{%>
+		<jsp:include page="logoutForm.jsp"/>
+	<%}
+	%>
 </body>
 </html>

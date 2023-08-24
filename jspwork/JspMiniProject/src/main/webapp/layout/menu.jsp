@@ -36,11 +36,16 @@
 				<ul id="main-menu">
 					<li><a href="<%=root%>/index.jsp">Home</a></li>
 					<li class="parent">
-						<a href="<%=root%>/">About 회원</a>
+						<a href="#">About 회원</a>
 						<ul class="sub-menu">
-							<li><a href="<%=root%>/index.jsp?main=login/loginMain.jsp"><i class="icon-wrench"></i>로그인</a></li>
-							<li><a href="<%=root%>/index.jsp?main=member/memberForm.jsp"><i class="icon-credit-card"></i>회원가입s</a></li>
-							<li><a href="<%=root%>/index.jsp?main=member/memberList.jsp"><i class="icon-gift"></i>회원목록</a></li>
+							<li><a href="<%=root%>/index.jsp?main=login/loginMain.jsp"><i class="bi bi-box-arrow-in-left"></i> <%=(String)session.getAttribute("loginOk")!=null?"로그아웃":"로그인" %></a></li>
+							<li><a href="<%=root%>/index.jsp?main=member/memberForm.jsp"><i class="bi bi-door-open"></i> 회원가입</a></li>
+							<%
+							if(session.getAttribute("myId").equals("admin"))
+							{%>
+								<li><a href="<%=root%>/index.jsp?main=member/memberList.jsp"><i class="bi bi-card-list"></i> 회원목록</a></li>
+							<%}%>
+							<li><a href="<%=root%>/index.jsp?main=member/myInfo.jsp"><i class="bi bi-file-person"></i> 마이페이지</a></li>
 						</ul>
 					</li>
 					<li><a href="<%=root%>/index.jsp?main=guest/guestList.jsp">방명록</a></li>

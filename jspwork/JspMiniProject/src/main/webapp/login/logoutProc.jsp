@@ -10,6 +10,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<%
+	session.removeAttribute("loginOk");
+	
+	response.sendRedirect("../index.jsp?main=login/loginMain.jsp");
+	%>
 </body>
 </html>

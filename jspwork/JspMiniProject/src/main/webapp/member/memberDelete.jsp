@@ -12,28 +12,14 @@
 </head>
 <body>
 	<%
-	String id=request.getParameter("id");
-	String pass=request.getParameter("pass");
-	String checksave=request.getParameter("checksave"); //체크안하면 null
+	String root=request.getContextPath();
+	
+	String num=request.getParameter("num");
 	
 	MemberDao dao=new MemberDao();
-	boolean flag=dao.authentification(id, pass);
+	dao.deleteMember(num);
 	
-	if(flag)
-	{
-		session.setMaxInactiveInterval(60*60*3); //3시간
-		session.setAttribute("loginOk", "yes");
-		session.setAttribute("myId", id);
-		session.setAttribute("saveOk", checksave==null?null:"yes");
-		
-		response.sendRedirect("../index.jsp?main=login/loginMain.jsp");
-	}
-	else{%>
-		<script>
-			alert("아이디와 비밀번호가 일치하지 않습니다");
-			history.back();
-		</script>
-	<%}
+	response.sendRedirect(root+"/index.jsp?main=member/memberList.jsp");
 	%>
 </body>
 </html>
