@@ -41,22 +41,23 @@
 							<li><a href="<%=root%>/index.jsp?main=login/loginMain.jsp"><i class="bi bi-box-arrow-in-left"></i> <%=(String)session.getAttribute("loginOk")!=null?"로그아웃":"로그인" %></a></li>
 							<li><a href="<%=root%>/index.jsp?main=member/memberForm.jsp"><i class="bi bi-door-open"></i> 회원가입</a></li>
 							<%
-							if(session.getAttribute("myId").equals("admin"))
+							if(session.getAttribute("loginOk")==null){}else if(session.getAttribute("myId").equals("admin"))
 							{%>
 								<li><a href="<%=root%>/index.jsp?main=member/memberList.jsp"><i class="bi bi-card-list"></i> 회원목록</a></li>
 							<%}%>
 							<li><a href="<%=root%>/index.jsp?main=member/myInfo.jsp"><i class="bi bi-file-person"></i> 마이페이지</a></li>
 						</ul>
 					</li>
-					<li><a href="<%=root%>/index.jsp?main=guest/guestList.jsp">방명록</a></li>
+					<li><a href="<%=root%>/index.jsp?main=guest/guestList.jsp">회원방명록</a></li>
 					<li class="parent"><a href="#">고객의소리</a>
 						<ul class="sub-menu">
 							<li><a href="<%=root%>/index.jsp?main=board/boardList.jsp">회원게시판</a></li>
+							<li><a href="#">비회원게시판</a></li>
 							<li><a href="#">스마트게시판</a></li>
 							<li><a href="#">Q&A</a></li>
 						</ul>
 					</li>
-					<li><a href="#">찾아오시는길</a></li>
+					<li><a href="<%=root%>/index.jsp?main=road/map.jsp">찾아오시는길</a></li>
 				</ul>
 			</nav>
 

@@ -13,6 +13,18 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 </head>
+<script>
+	$(function(){
+		$(".btn-del").click(function(){
+			var num=$(this).attr("num");
+			
+			if(confirm("정말 탈퇴하시겠습니까?"))
+			{
+				location.href="member/deleteMyInfo.jsp?num="+num;
+			}
+		})
+	});
+</script>
 <body>
 	<%
 	MemberDao dao=new MemberDao();
@@ -25,14 +37,14 @@
 		<table class="table table-bordered" style="width: 500px">
 			<%for(MemberDto dto:list)
 			{
-				if(dto.getId().equals((String)session.getAttribute("myId"))){%>
+				if(session.getAttribute("loginOk")!=null&&dto.getId().equals((String)session.getAttribute("myId"))){%>
 				<tr>
 					<td rowspan="5" valign="middle"><img src="image/cartoon/<%=no<10?"0"+no++:no++ %>.png"></td>
 					<td><%=dto.getId() %></td>
 					<td rowspan="5" valign="middle">
 						<button type="button" class="btn btn-outline-info" style="margin-bottom: 10px"
 						onclick="location.href='index.jsp?main=member/updateForm.jsp?num=<%=dto.getNum()%>'">수정</button><br>
-						<button type="button" class="btn btn-outline-danger">삭제</button>
+						<button type="button" class="btn btn-outline-danger btn-del" num="<%=dto.getNum()%>">탈퇴</button>
 					</td>
 				</tr>
 				<tr><td><%=dto.getName() %></td></tr>
