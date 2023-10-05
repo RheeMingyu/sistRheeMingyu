@@ -1,3 +1,4 @@
+<%@page import="data.dao.ShopDao"%>
 <%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -22,6 +23,33 @@
 	}
 	%>
 </head>
+<style>
+	div.cart{
+		float: right;
+		cursor: pointer;
+	}
+	div.count{
+		width: 30px;
+		height: 30px;
+		float: right;
+		background-color: red;
+		border-radius: 100px;
+		text-align: center;
+		line-height: 30px;
+		z-index: 10;
+		position: relative;
+		left: -20px;
+		top: 10px;
+		color: white;
+	}
+</style>
+<script>
+	$(function(){
+		$("div.cart").click(function(){
+			location.href="index.jsp?main=shop/myCart.jsp";
+		});
+	});
+</script>
 <body>
 	<a href="<%=root %>" style="color: black;"><img src="<%=root%>/image2/sistgood.png" style="width: 200px;"></a>
 	<%
@@ -34,5 +62,14 @@
 		<button type="button" class="btn btn-info" onclick="location.href='index.jsp?main=login/loginForm.jsp'">로그인</button>
 	<%}%>
 	<br>쌍용교육센터
+	
+	<div class="cart">
+		<%
+		ShopDao sdao=new ShopDao();
+		int cartSize=sdao.getCartList((String)session.getAttribute("myId")).size();
+		%>
+		<i class="bi bi-cart fs-3"></i>
+		<div class="count"><%=cartSize %></div>
+	</div>
 </body>
 </html>

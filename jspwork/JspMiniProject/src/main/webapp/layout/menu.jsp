@@ -51,13 +51,17 @@
 					<li><a href="<%=root%>/index.jsp?main=guest/guestList.jsp">회원방명록</a></li>
 					<li class="parent"><a href="#">고객의소리</a>
 						<ul class="sub-menu">
-							<li><a href="<%=root%>/index.jsp?main=board/boardList.jsp">회원게시판</a></li>
+							<li><a href="<%=root%>/index.jsp?main=board/smartform.jsp">스마트게시판</a></li>
 							<li><a href="#">비회원게시판</a></li>
-							<li><a href="#">스마트게시판</a></li>
 							<li><a href="#">Q&A</a></li>
 						</ul>
 					</li>
 					<li><a href="<%=root%>/index.jsp?main=road/map.jsp">찾아오시는길</a></li>
+					<%if(session.getAttribute("loginOk")!=null&&session.getAttribute("myId").equals("admin"))
+					{%>
+						<li><a href="<%=root%>/index.jsp?main=shop/addForm.jsp"> 상품등록</a></li>
+					<%}%>
+					<li><a href="<%=root%>/index.jsp?main=shop/shopList.jsp"> 상품목록</a></li>
 				</ul>
 			</nav>
 

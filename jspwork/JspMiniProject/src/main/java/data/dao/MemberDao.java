@@ -256,4 +256,31 @@ public class MemberDao {
 		
 		return flag;
 	}
+	
+	public String getNumFromId(String id) {
+		
+		String num="";
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where id=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+				num=rs.getString("num");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return num;
+	}
 }
