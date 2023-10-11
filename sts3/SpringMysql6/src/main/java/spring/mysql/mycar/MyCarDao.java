@@ -29,4 +29,12 @@ public class MyCarDao {
 	public void deleteCar(String num) {
 		session.delete("deleteOfMyCar", num);
 	}
+	
+	public MyCarDto getDataCar(String num) {
+		return session.selectOne("getMyCar", num);
+	}
+	
+	public void updateCar(MyCarDto dto) {
+		session.update("updateOfMyCar", dto);
+	}
 }

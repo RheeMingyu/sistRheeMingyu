@@ -53,4 +53,21 @@ public class CarController {
 		return "redirect:list";
 	}
 	
+	@GetMapping("/kakao/updateForm")
+	public String carupdate(@RequestParam String num,Model model) {
+
+		MyCarDto dto=dao.getDataCar(num);
+		
+		model.addAttribute("dto", dto);
+		
+		return "car/updateForm";
+	}
+	
+	@PostMapping("kakao/update")
+	public String carupdatecommit(@ModelAttribute("dto") MyCarDto dto) {
+		
+		dao.updateCar(dto);
+		
+		return "redirect:list";
+	}
 }
