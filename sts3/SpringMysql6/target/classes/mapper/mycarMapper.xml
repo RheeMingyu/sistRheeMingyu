@@ -30,6 +30,6 @@
 	
 	<!-- update -->
 	<update id="updateOfMyCar" parameterType="mdto">
-		update mycar set carname=#{carname},carprice=#{carprice},carcolor=#{carcolor},carguip=#{carguip}
+		update mycar set carname=#{carname},carprice=#{carprice},carcolor=#{carcolor},carguip=#{carguip} where num=#{num}
 	</update>
 </mapper>
