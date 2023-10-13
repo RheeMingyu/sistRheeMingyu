@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="friday">
+	<select id="selectTotalCountOfmyInfo" resultType="int">
+		select count(*) from myinfo
+	</select>
+	
+	<select id="selectAllInfo" resultType="idto">
+		select * from myinfo order by num desc
+	</select>
+	
+	<select id="selectInfo" resultType="idto" parameterType="String">
+		select * from myinfo where num=#{num}
+	</select>
+	
+	<insert id="insertOfMyInfo" parameterType="idto">
+		insert into myinfo (name,driver,addr,photo,gaipday) values(#{name},#{driver},#{addr},#{photo},now())
+	</insert>
+	
+	<update id="updateOfMyInfo" parameterType="String">
+		update myinfo set name=#{name},driver=#{driver},addr=#{addr}
+		<if test="photo!=null">
+			,photo=#{photo}
+		</if>
+		where num=#{num}
+	</update>
+	
+	<delete id="deleteOfMyInfo" parameterType="String">
+		delete from myinfo where num=#{num}
+	</delete>
+</mapper>

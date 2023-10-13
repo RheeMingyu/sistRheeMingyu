@@ -25,6 +25,7 @@
 				url:"list1",
 				success:function(res){
 					
+					$("#out1").empty();
 					$("#out1").append("이름: "+res.name+"<br>");
 					$("#out1").append("연락처: "+res.hp+"<br>");
 					$("#out1").append("주소: "+res.addr+"<br>");

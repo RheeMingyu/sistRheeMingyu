@@ -25,6 +25,7 @@
 				url:"list2",
 				success:function(res){
 					
+					$("#out2").empty();
 					$("#out2").append("상품: "+res.sang+"<br>");
 					$("#out2").append("단가: "+res.price+"원<br>");
 					$("#out2").append("개수: "+res.count+"개<br>");

@@ -16,6 +16,8 @@
 		<h2 class="alert alert-danger">Spring Json연습</h2>
 		<h4><a href="jsonex1">Json예제1</a></h4>
 		<h4><a href="jsonex2">Json예제2</a></h4>
+		<h4><a href="jsonex3">Json예제3</a></h4>
+		<h4><a href="jsonex4">Json예제4</a></h4>
 	</div>
 </body>
 </html>
