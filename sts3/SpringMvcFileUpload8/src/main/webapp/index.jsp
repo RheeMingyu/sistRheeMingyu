@@ -14,5 +14,8 @@
 <body>
 	<button type="button" class="btn btn-outline-info"
 	onclick="location.href='info/list'">스프링 게시판 연습_myinfo</button>
+	
+	<button type="button" class="btn btn-outline-info"
+	onclick="location.href='board/list'">스프링 답변형게시판 연습_reboard</button>
 </body>
 </html>

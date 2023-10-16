@@ -22,9 +22,9 @@
 			<th width="60">번호</th>
 			<th width="120">이름</th>
 			<th width="100">사진</th>
-			<th width="60">운전면허</th>
+			<th width="100">운전면허</th>
 			<th width="200">주소</th>
-			<th width="100">작성일</th>
+			<th width="130">작성일</th>
 			<th width="150">편집</th>
 		</tr>
 		<c:forEach var="info" items="${list }" varStatus="i">
@@ -46,5 +46,17 @@
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<div style="width: 800px;text-align: center">
+		<form action="list" class="d-inline-flex">
+			<select name="title" class="form-control" style="width: 120px">
+				<option value="name" ${title=="name"?"selected":"" }>이름</option>
+				<option value="addr" ${title=="addr"?"selected":"" }>주소</option>
+				<option value="driver" ${title=="driver"?"selected":"" }>운전면허</option>
+			</select>
+			<input type="text" name="search" class="form-control" placeholder="검색" style="width: 150px" value="${search }">
+			<button type="submit" class="btn btn-success">검색</button>
+		</form>
+	</div>
 </body>
 </html>
