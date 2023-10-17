@@ -74,8 +74,51 @@ public class BoardDao implements BoardDaoInter {
 	}
 
 	@Override
-	public BoardDto getContent(int num) {
-		return session.selectOne("board.selectContent", num);
+	public BoardDto getData(int num) {
+		return session.selectOne("board.getData", num);
+	}
+
+	@Override
+	public void updateViewcount(int num) {
+		session.update("board.updateViewcount", num);
+	}
+
+	@Override
+	public int authentification(int num, int pass) {
+		
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		map.put("num", num);
+		map.put("pass", pass);
+
+		return session.selectOne("board.authentification", map);
+	}
+
+	@Override
+	public void deleteData(int num) {
+		session.delete("deleteOfReboard", num);
+	}
+
+	@Override
+	public void updateData(BoardDto dto) {
+		session.update("updateOfReboard", dto);
+	}
+
+	@Override
+	public int getNextRestep(BoardDto dto) {
+		return session.selectOne("board.nextRestep", dto);
+	}
+
+	@Override
+	public void deleteCascade(BoardDto dto) {
+		
+		Map<String, Integer> map=new HashMap<String, Integer>();
+		int pointValue=(getNextRestep(dto)==0?0:getNextRestep(dto));
+		map.put("pointValue", getNextRestep(dto)-1);
+		map.put("restep", dto.getRestep());
+		map.put("relevel", dto.getRelevel());
+		map.put("regroup", dto.getRegroup());
+		
+		session.delete("deleteChildren", map);
 	}
 
 }

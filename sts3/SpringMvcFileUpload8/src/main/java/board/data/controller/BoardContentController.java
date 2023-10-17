@@ -1,7 +1,5 @@
 package board.data.controller;
 
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,12 +18,12 @@ public class BoardContentController {
 	@GetMapping("/board/content")
 	public String content(Model model,@RequestParam int num,int currentPage) {
 		
-		BoardDto dto=dao.getContent(num);
-		
-		dto.setPhoto(dto.getPhoto().substring(0, dto.getPhoto().length()-1));
+		BoardDto dto=dao.getData(num);
 		
 		model.addAttribute("dto", dto);
 		model.addAttribute("currentPage", currentPage);
+		
+		dao.updateViewcount(num);
 		
 		return "reboard/content";
 	}

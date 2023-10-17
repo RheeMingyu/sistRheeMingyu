@@ -28,7 +28,42 @@
 		select * from reboard order by regroup desc,restep asc limit #{start},#{perPage}
 	</select>
 	
-	<select id="selectContent" resultType="bdto" parameterType="int">
+	<select id="getData" resultType="bdto" parameterType="int">
 		select * from reboard where num=#{num}
 	</select>
+	
+	<update id="updateViewcount" parameterType="int">
+		update reboard set viewcount=viewcount+1 where num=#{num}
+	</update>
+	
+	<select id="authentification" parameterType="HashMap" resultType="int">
+		select count(*) from reboard where num=#{num} and pass=#{pass}
+	</select>
+	
+	<delete id="deleteOfReboard" parameterType="int">
+		delete from reboard where num=#{num}
+	</delete>
+	
+	<update id="updateOfReboard" parameterType="bdto">
+		update reboard set pass=#{pass},subject=#{subject},content=#{content}
+		<if test="photo!='no'">
+			,photo=#{photo}
+		</if>
+		where num=#{num}
+	</update>
+	
+	<select id="nextRestep" parameterType="bdto" resultType="int">
+		select ifnull(min(restep),0) from reboard where regroup=#{regroup} and restep>#{restep} and relevel=#{relevel}
+	</select>
+	
+	<delete id="deleteChildren" parameterType="HashMap">
+		delete from reboard where restep
+		<if test="pointValue==-1">
+			>=#{restep}
+		</if>
+		<if test="pointValue!=-1">
+			between #{restep} and #{pointValue}
+		</if>
+		and relevel>=#{relevel} and regroup=#{regroup}
+	</delete>
 </mapper>
