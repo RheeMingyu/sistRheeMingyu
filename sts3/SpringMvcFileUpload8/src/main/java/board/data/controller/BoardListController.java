@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import answer.data.AnswerDaoInter;
 import spring.mvc.reboard.BoardDaoInter;
 import spring.mvc.reboard.BoardDto;
 
@@ -17,7 +18,10 @@ public class BoardListController {
 	@Autowired
 	BoardDaoInter dao;
 	
-	@GetMapping("board/list")
+	@Autowired
+	AnswerDaoInter adao;
+	
+	@GetMapping("/board/list")
 	public String list(Model model,
 			@RequestParam(value = "currentPage",defaultValue = "1") int currentPage) {
 		
@@ -44,11 +48,17 @@ public class BoardListController {
 		//각페이지에서 필요한 게시글 가져오기
 		List<BoardDto> list=dao.getPagingList(startNum, perPage);
 		
+		//list의 각글에 댓글개수 표시
+		for(BoardDto d:list) {
+			
+			d.setAcount(adao.getAnswerList(d.getNum()).size());
+		}
+		
 		//각 페이지에 출력할 시작번호
 		int no=totalCount-startNum;
 		
 		model.addAttribute("totalCount", totalCount);
-		model.addAttribute("list", list);
+		model.addAttribute("list", list); //댓글포함후 전달
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("totalPage", totalPage);

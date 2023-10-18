@@ -24,7 +24,7 @@
 				<th width="60">번호</th>
 				<th width="300">제목</th>
 				<th width="220">작성자</th>
-				<th width="250">작성일</th>
+				<th width="130">작성일</th>
 				<th width="60">조회</th>
 			</tr>
 			<c:if test="${totalCount==0 }">
@@ -47,7 +47,10 @@
 								<img src="../upload/re.png">
 							</c:if>
 							<!-- 제목..여기누르면 내용보기로 -->
-							<a href="content?num=${dto.num }&currentPage=${currentPage}">${dto.subject }</a>
+							<a href="content?num=${dto.num }&currentPage=${currentPage}">${dto.subject }</a>&nbsp;
+							<c:if test="${dto.acount!=0 }">
+								<a style="color: red" href="content?num=${dto.num }&currentPage=${currentPage}#answer">[${dto.acount }]</a>
+							</c:if>
 						
 							<!-- 사진이 있을경우 아이콘 표시 -->
 							<c:if test="${dto.photo!='no' }">

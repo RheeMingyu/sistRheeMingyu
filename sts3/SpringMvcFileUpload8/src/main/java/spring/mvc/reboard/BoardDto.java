@@ -1,6 +1,6 @@
 package spring.mvc.reboard;
 
-import com.google.protobuf.Timestamp;
+import java.sql.Timestamp;
 
 public class BoardDto {
 
@@ -18,6 +18,8 @@ public class BoardDto {
 	private String photo;
 	
 	private Timestamp writeday;
+	
+	private int acount;
 
 	public int getNum() {
 		return num;
@@ -105,5 +107,13 @@ public class BoardDto {
 
 	public void setWriteday(Timestamp writeday) {
 		this.writeday = writeday;
+	}
+
+	public int getAcount() {
+		return acount;
+	}
+
+	public void setAcount(int acount) {
+		this.acount = acount;
 	}
 }
