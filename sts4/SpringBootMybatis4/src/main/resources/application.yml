@@ -1,0 +1,24 @@
+#tomcat port
+server:
+  port: 9001
+#jsp
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springdb?serverTimezone=Asia/Seoul
+    username: rheemingyu
+    password: a1234
+#mybatis
+mybatis:
+  type-aliases-package: data.model.*
+  #data.model.*..dao(mapper)패키지,dto패키지 등록
+  mapper-locations:
+  - /mapper/**/*.xml
