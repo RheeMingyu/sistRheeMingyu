@@ -40,8 +40,8 @@
 				<td><fmt:formatNumber value="${mdto.price }" type="currency"/></td>
 				<td><fmt:formatDate value="${mdto.ipgoday }" pattern="yyyy-MM-dd"/></td>
 				<td colspan="2" align="center">
-					<button type="button" class="btn btn-outline-info" onclick="location.href='update?num?${mdto.num}'">수정</button>
-					<button type="button" class="btn btn-outline-danger" onclick="location.href='delete?num?${mdto.num}'">삭제</button>
+					<button type="button" class="btn btn-outline-info" onclick="location.href='updateform?num=${mdto.num}'">수정</button>
+					<button type="button" class="btn btn-outline-danger" onclick="location.href='delete?num=${mdto.num}'">삭제</button>
 				</td>
 			</tr>
 		</c:forEach>
