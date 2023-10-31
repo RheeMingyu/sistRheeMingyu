@@ -1,0 +1,24 @@
+#tomcat port
+server:
+  port: 8900
+#jsp
+spring:
+  #mvc:
+    #view:
+      #prefix: /WEB-INF/ipgo/
+      #suffix: .jsp
+  #TilesViewResolver사용하므로 jspresolver설정은 제거
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springdb?serverTimezone=Asia/Seoul
+    username: rheemingyu
+    password: a1234
+#mybatis
+mybatis:
+  type-aliases-package: boot.data.*
+  mapper-locations:
+  - /mapper/**/*.xml

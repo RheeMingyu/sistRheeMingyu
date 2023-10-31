@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.data.mapper.IpgoMapperInter"> <!-- framework와 달리 고유한이름 사용불가,경로 상세입력 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) from ipgo
+	</select>
+	<insert id="insertIpgo" parameterType="ipgoDto">
+		insert into ipgo(sangpum,price,photoname,ipgoday) values (#{sangpum},#{price},#{photoname},now())
+	</insert>
+	<select id="getAllIpgos" resultType="ipgoDto">
+		select * from ipgo order by num desc
+	</select>
+</mapper>
