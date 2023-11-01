@@ -12,7 +12,7 @@ public class ReBoardController {
 		return "/hosg/reboard/start";
 	}
 
-	@GetMapping("/board/list")
+	@GetMapping("/reboard/list")
 	public ModelAndView list() {
 		
 		ModelAndView model=new ModelAndView();

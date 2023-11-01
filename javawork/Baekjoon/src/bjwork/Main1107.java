@@ -22,42 +22,81 @@ public class Main1107 {
 	
 	public static int with_nums(int channel,int digit_count,List<Integer> usable_list,boolean sg) {
 		
+		if(usable_list.size()==1&&usable_list.get(0)==0) {
+			return channel+1;
+		}
+		
 		int divisor=(int)Math.pow(SINGLE_DIGIT_VAL, digit_count-1);
 		int diff=0;
 		int digits=digit_count;
+		int init_channel=channel;
 		
 		for(int i=0;i<digit_count;i++) {
 			int digit=(int)(channel/divisor);
 			int near=get_approximation(digit, usable_list, sg);
 			
+			int min_digit=Collections.min(usable_list);
+			int max_digit=Collections.max(usable_list);
+			List<Integer> sub_list=new ArrayList<>(usable_list.size());
+			sub_list.addAll(usable_list);
+			int sub_min=Collections.min(sub_list);
+			
 			if(i==0) {
-				int min_digit=Collections.min(usable_list);
-				int max_digit=Collections.max(usable_list);
-				List<Integer> sub_list=new ArrayList<>(usable_list.size());
-				sub_list.addAll(usable_list);
-				sub_list.remove(Integer.valueOf(0));
-				int sub_min=Collections.min(sub_list);
-					
+				if(sub_list.size()!=1||sub_list.get(0)!=0) {
+					sub_list.remove(Integer.valueOf(0));
+					sub_min=Collections.min(sub_list);
+				}
+				
 				if(max_digit<digit&&sg) {
-					diff+=(sub_min*11-digit)*divisor; //min_digit가 0일때 오류
-					digits=digit_count+1;
+					diff+=(sub_min*10+min_digit-digit)*divisor; //min_digit가 0일때 오류
+					digits++;
 				}
 				else if(min_digit>digit&&!sg) {
 					diff+=digit*divisor;
-					digits=digit_count-1;
+					digits--;
 				}
 				else
 					diff+=Math.abs(digit-near)*divisor;
 			}
-			else if(i!=0&&sg)
+			/*else if(i!=0&&sg&&near>digit) {
 				diff+=Collections.min(usable_list)*divisor;
-			else if(i!=0&&!sg)
+			}
+			else if(i!=0&&!sg&&near<digit) {
 				diff-=Collections.max(usable_list)*divisor;
-			
+				if(i==digit_count-1&&diff<0) {diff=init_channel+diff;}
+			}
+			else if(i!=0&&near==digit) {
+				diff+=Math.abs(digit-near)*divisor;
+			}*/ //조건,예외 더 고민
+			System.out.println(channel+","+near+","+digit+","+digits+","+divisor+","+diff);
 			channel%=divisor;
 			divisor/=SINGLE_DIGIT_VAL;
 		}
 		return diff+digits;
+	}
+	
+	public static int first_process(int digit_count,List<Integer> usable_list,boolean sg,int digit,int diff,int digits,int divisor,int near) {
+		
+		int min_digit=Collections.min(usable_list);
+		int max_digit=Collections.max(usable_list);
+		List<Integer> sub_list=new ArrayList<>(usable_list.size());
+		sub_list.addAll(usable_list);
+		sub_list.remove(Integer.valueOf(0));
+		int sub_min=Collections.min(sub_list);
+		System.out.println(min_digit+","+max_digit+","+sub_min);
+			
+		if(max_digit<digit&&sg) {
+			diff+=(sub_min*11-digit)*divisor; //min_digit가 0일때 오류
+			digits=digit_count+1;
+		}
+		else if(min_digit>digit&&!sg) {
+			diff+=digit*divisor;
+			digits=digit_count-1;
+		}
+		else
+			diff+=Math.abs(digit-near)*divisor;
+		
+		return diff;
 	}
 	
 	public static int get_approximation(int digit,List<Integer> usable_list,boolean sg) {
