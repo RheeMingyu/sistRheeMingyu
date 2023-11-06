@@ -68,12 +68,14 @@ public class RestLoginController {
 	}
 	
 	@GetMapping("/member/updatemodal")
-	public void updatemodal(String num,String selinfo,String newinfo) {
+	public void updatemodal(String num,String selinfo,String newinfo,HttpSession session) {
 		
 		MemberDto mdto=service.getDataByNum(num);
 		
-		if(selinfo.equals("name"))
+		if(selinfo.equals("name")) {
 			mdto.setName(newinfo);
+			session.setAttribute("loginname", newinfo);
+		}
 		else if(selinfo.equals("addr"))
 			mdto.setAddr(newinfo);
 		else if(selinfo.equals("email"))

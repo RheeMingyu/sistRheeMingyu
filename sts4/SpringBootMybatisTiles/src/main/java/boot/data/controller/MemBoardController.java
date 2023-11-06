@@ -10,11 +10,13 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import boot.data.dto.MemBoardDto;
@@ -42,7 +44,7 @@ public class MemBoardController {
 		int startPage; //각블럭에서 보여질 시작페이지
 		int endPage; //각블럭에서 보여질 끝페이지
 		int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0,오라클은 1)
-		int perPage=10; //한페이지당 보여질 글의 갯수
+		int perPage=3; //한페이지당 보여질 글의 갯수
 		int perBlock=5; //한블럭당 보여질 페이지 개수
 		
 		totalPage=totalcount/perPage+(totalcount%perPage==0?0:1);
@@ -108,12 +110,13 @@ public class MemBoardController {
 	}
 	
 	@GetMapping("/content")
-	public ModelAndView content(@RequestParam String num,int currentPage) {
+	public ModelAndView content(@RequestParam String num,
+			@RequestParam(value = "currentPage",defaultValue = "1") int currentPage) {
 		
 		ModelAndView model=new ModelAndView();
 		model.setViewName("/memboard/content");
 
-		service.updateviewcount(num);
+		//service.updateviewcount(num);
 		
 		MemBoardDto dto=service.getData(num);
 		
@@ -131,5 +134,55 @@ public class MemBoardController {
 		model.addObject("currentPage", currentPage);
 		
 		return model;
+	}
+	
+	@GetMapping("/updateform")
+	public String updateform(Model model,@RequestParam int currentPage,String num) {
+		
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("num", num);
+		
+		MemBoardDto mdto=service.getData(num);
+		model.addAttribute("mdto", mdto);
+		
+		return "/memboard/updateForm";
+	}
+	
+	@PostMapping("/update")
+	public String update(Model model,@ModelAttribute("mdto") MemBoardDto mdto,int currentPage,
+			HttpSession session) {
+		
+		model.addAttribute("currentPage", currentPage);
+		
+		String oldmulti=service.getData(mdto.getNum()).getUploadfile();
+		String newmulti=mdto.getMulti().getOriginalFilename();
+		String uploadfile="";
+		if(newmulti!=null) {
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+			
+			uploadfile=sdf.format(new Date())+"_"+newmulti;
+			mdto.setUploadfile(uploadfile);
+			
+			String path=session.getServletContext().getRealPath("/savefile");
+			File file=new File(path+"\\"+oldmulti);
+			file.delete();
+			try {
+				mdto.getMulti().transferTo(new File(path+"\\"+uploadfile));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		service.updateBoard(mdto);
+		
+		return "redirect:content?num="+mdto.getNum()+"&currentPage="+currentPage;
+	}
+	
+	@GetMapping("/delete")
+	public String delete(@RequestParam int currentPage) {
+		return "redirect:list?currentPage="+currentPage;
 	}
 }

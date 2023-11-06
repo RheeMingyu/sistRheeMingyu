@@ -43,15 +43,15 @@
 		</c:if>
 	</table>
 	<!-- 페이징 -->
-	<c:if test="${totalCount>0 }">
+	<c:if test="${totalcount>0 }">
 		<div style="width: 800px;text-align: center">
 			<ul class="pagination justify-content-center">
 				<!-- 이전 -->
-				<c:if test="${startPage>1 }">
-					<li class="page-item"><a href="list?currentPage=${startPage-1 }">이전</a></li>
+				<c:if test="${startpage>1 }">
+					<li class="page-item"><a href="list?currentPage=${startpage-1 }">이전</a></li>
 				</c:if>
 				
-				<c:forEach var="pp" begin="${startPage }" end="${endPage }">
+				<c:forEach var="pp" begin="${startpage }" end="${endpage }">
 					<c:if test="${pp==currentPage }">
 						<li class="page-item active">
 							<a class="page-link" href="list?currentPage=${pp }">${pp }</a>
@@ -65,8 +65,8 @@
 				</c:forEach>
 				
 				<!-- 다음 -->
-				<c:if test="${endPage<totalPage }">
-					<li class="page-item"><a href="list?currentPage=${endPage+1 }">다음</a></li>
+				<c:if test="${endpage<totalpage }">
+					<li class="page-item"><a href="list?currentPage=${endpage+1 }">다음</a></li>
 				</c:if>
 			</ul>
 		</div>

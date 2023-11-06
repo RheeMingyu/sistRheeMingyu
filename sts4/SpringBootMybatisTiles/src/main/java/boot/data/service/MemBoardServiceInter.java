@@ -13,4 +13,5 @@ public interface MemBoardServiceInter {
 	public int getMaxNum();
 	public List<MemBoardDto> getList(int start,int perpage);
 	public MemBoardDto getDataById(String myid);
+	public void updateBoard(MemBoardDto dto);
 }

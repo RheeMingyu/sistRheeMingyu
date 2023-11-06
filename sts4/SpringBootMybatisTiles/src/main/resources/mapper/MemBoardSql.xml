@@ -24,4 +24,11 @@
 	<select id="getDataById" parameterType="String" resultType="memboard">
 		select * from memboard where myid=#{myid}
 	</select>
+	<update id="updateBoard" parameterType="memboard">
+		update memboard set subject=#{subject},content=#{content} 
+		<if test="uploadfile!=null">
+		,uploadfile=#{uploadfile}
+		</if>
+		where num=#{num}
+	</update>
 </mapper>

@@ -58,4 +58,9 @@ public class MemBoardService implements MemBoardServiceInter {
 		return mapperInter.getDataById(myid);
 	}
 
+	@Override
+	public void updateBoard(MemBoardDto dto) {
+		mapperInter.updateBoard(dto);
+	}
+
 }

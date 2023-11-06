@@ -40,7 +40,7 @@
 			<a href="/">Home</a>
 		</li>
 		<li>
-			<a href="${root }/ipgo/ipgoform">상품등록</a>
+			<a href="${root }/smart/list">스마트샵</a>
 		</li>
 		<li>
 			<a href="${root }/ipgo/list">상품목록</a>

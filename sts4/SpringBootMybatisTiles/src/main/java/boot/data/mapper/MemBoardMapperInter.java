@@ -17,4 +17,5 @@ public interface MemBoardMapperInter {
 	public int getMaxNum();
 	public List<MemBoardDto> getList(HashMap<String, Integer> map);
 	public MemBoardDto getDataById(String myid);
+	public void updateBoard(MemBoardDto dto);
 }
