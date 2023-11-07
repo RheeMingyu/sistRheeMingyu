@@ -49,7 +49,10 @@
 	</div>
 	</c:if>
 	<c:if test="${sessionScope.loginok==null }">
-		<h2>로그인 후 이용해주세요</h2>
+		<script>
+			alert("로그인 후 이용해주세요");
+			history.back();
+		</script>
 	</c:if>
 </body>
 </html>

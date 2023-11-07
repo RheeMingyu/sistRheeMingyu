@@ -81,13 +81,13 @@
 	
 	      <!-- Modal body -->
 	      <div class="modal-body">
-	      	<input type="text" placeholder="ID" name="id" class="form-control"><br>
-	      	<input type="password" placeholder="Password" name="pass" class="form-control"><br>
+	      	<input type="text" placeholder="ID" name="id" id="loginid" class="form-control"><br>
+	      	<input type="password" placeholder="Password" id="loginpass" name="pass" class="form-control"><br>
 	      </div>
 	
 	      <!-- Modal footer -->
 	      <div class="modal-footer">
-	      	<button type="button" class="btn btn-outline-success">로그인</button>
+	      	<button type="button" class="btn btn-outline-success" id="btnloginok">로그인</button>
 	        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
 	      </div>
 	

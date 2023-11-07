@@ -93,7 +93,7 @@ public class ReboardService implements ReboardServiceInter {
 	@Override
 	public ReboardDto getData(int num) {
 		// TODO Auto-generated method stub
-		return null;
+		return mapperInter.getData(num);
 	}
 
 	@Override

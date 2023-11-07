@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -65,6 +68,7 @@ public class ReBoardController {
 		List<ReboardDto> list=service.getPagingList(sc, sw, startNum, perPage);
 		
 		model.addObject("list", list);
+		model.addObject("totalcount", totalcount);
 		model.addObject("currentPage", currentPage);
 		model.addObject("totalpage", totalPage);
 		model.addObject("startpage", startPage);
@@ -145,7 +149,25 @@ public class ReBoardController {
 	}
 	
 	@GetMapping("/content")
-	public String content() {
+	public String content(Model model,@RequestParam int num,@RequestParam(defaultValue = "1") int currentPage) {
+		
+		//service.updateViewCount(num);
+		
+		ReboardDto dto=service.getData(num);
+		model.addAttribute("dto", dto);
+		model.addAttribute("currentPage", currentPage);
+		
 		return "/reboard/content";
+	}
+	
+	@GetMapping("/likes")
+	public @ResponseBody Map<String, Integer> uplikes(int num) {
+		service.updateLikes(num);
+		int likes=service.getData(num).getLikes();
+		
+		Map<String, Integer> map=new HashMap<>();
+		map.put("likes", likes);
+		
+		return map;
 	}
 }
